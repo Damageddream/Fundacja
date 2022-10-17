@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import "./Carousel.css";
 import logo from "../images/fresk-logo.png";
+import  eu from "../images/eu.jpg";
+import  kurs from "../images/kurs.jpg";
 import Carousel from 'react-bootstrap/Carousel';
 
 const Carousel2 = () => {
@@ -11,11 +13,12 @@ const Carousel2 = () => {
     };
   
     return (
-      <Carousel activeIndex={index} onSelect={handleSelect}>
+      <Carousel className="carousel" activeIndex={index} onSelect={handleSelect}>
         <Carousel.Item>
           <img
-            className="d-block w-100"
-            src="holder.js/800x400?text=First slide&bg=373940"
+            id="logo"
+            className="d-block"
+            src={logo}
             alt="First slide"
           />
           <Carousel.Caption>
@@ -25,8 +28,9 @@ const Carousel2 = () => {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100"
-            src="holder.js/800x400?text=Second slide&bg=282c34"
+            id="kurs"
+            className="d-block"
+            src={kurs}
             alt="Second slide"
           />
   
@@ -37,8 +41,9 @@ const Carousel2 = () => {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100"
-            src="holder.js/800x400?text=Third slide&bg=20232a"
+            id="eu"
+            className="d-block"
+            src={eu}
             alt="Third slide"
           />
   
