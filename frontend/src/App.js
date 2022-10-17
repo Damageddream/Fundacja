@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./components/Navbar";
-import Jumbotron from "./components/Jumbotron";
+import Cards from "./components/Cards/Cards"
 import Footer from "./components/Footer";
 import Carousel2 from "./components/Carousel2";
 
@@ -9,6 +9,7 @@ function App() {
     <div>
       <Navbar />
       <Carousel2 />
+      <Cards />
       <Footer />
     </div>
   );

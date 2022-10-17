@@ -1,9 +1,9 @@
 import React from "react";
-import Card from './Card'
+import Cardy from "./Card"
 
 const Cards = () => {
   return (
-    <Card />
+    <Cardy />
   );
 };
 

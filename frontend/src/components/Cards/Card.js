@@ -1,17 +1,20 @@
 import React from "react";
+import Card from 'react-bootstrap/Card';
+import logo from "../images/fresk-logo.png";
 
-const Card = () => {
+const Cardy = () => {
   return (
-    <div className="card" style="width: 18rem;">
-      <img className="card-img-top" src="..." alt="Card image cap" />
-      <div className="card-body">
-        <p className="card-text">
+    <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src={logo} />
+      <Card.Body>
+        <Card.Title>Card Title</Card.Title>
+        <Card.Text>
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
-        </p>
-      </div>
-    </div>
+        </Card.Text>
+      </Card.Body>
+    </Card>
   );
 };
 
-export default Card;
+export default Cardy;

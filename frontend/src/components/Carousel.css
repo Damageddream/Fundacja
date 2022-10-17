@@ -3,6 +3,7 @@
     background: white;
     color: white;
     position: relative;
+
 }
 
 .container {
@@ -18,12 +19,25 @@
     height: 100%;
     object-fit: cover;
     margin:auto;
+
+
+    
 }
 
 #logo{
     margin:auto;
     width: auto;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.699);
 
 }
 
+.c-text {
+    background: rgba(0, 0, 0, 0.349);
+    text-shadow: 0 1px 0 black;
+}
+
+.logo {
+    background: rgba(255, 255, 255, 0.349);
+    text-shadow: 0 1px 0 black;
+    color: rgba(255, 255, 255, 0.158);
+}
