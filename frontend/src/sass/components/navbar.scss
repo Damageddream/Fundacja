@@ -1,8 +1,11 @@
+@import '../variables/variables.scss';
+
+
 .nav-link {
     background-image: linear-gradient(
       to right,
-      rgb(0,113,188),
-      rgb(0,113,188) 50%,
+      $logoblue,
+      $logoblue,
       rgb(7, 6, 6) 50%
     );
     background-size: 200% 100%;
@@ -18,7 +21,7 @@
   
   .nav-link:before{
     content: '';
-    background: rgb(0,113,188);
+    background: $logoblue;
     display: block;
     position: absolute;
     bottom: -3px;
