@@ -1,13 +1,14 @@
 import React from "react";
-import Navbar from "./components/Navbar";
+import Navbar2 from "./components/Navbar2";
 import Cards from "./components/Cards/Cards"
 import Footer from "./components/Footer";
 import Carousel2 from "./components/Carousel2";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div>
-      <Navbar />
+      <Navbar2 />
       <Carousel2 />
       <Cards />
       <Footer />
