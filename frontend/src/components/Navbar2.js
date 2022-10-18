@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import logo from "../images/fresk-logo-beznapi.png";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import "./Navbar.css";
+import "../sass/components/navbar.css";
 
 function Navbar2() {
     return (
@@ -20,7 +20,7 @@ function Navbar2() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="flex-grow-1 justify-content-evenly">
-                        <Nav.Link href="#features">Aktualności</Nav.Link>
+                        <Nav.Link class="nav-link" href="#features">Aktualności</Nav.Link>
                         <Nav.Link href="#pricing">O Fundacji</Nav.Link>
                         <Nav.Link href="#pricing">Co robimy</Nav.Link>
                         <Nav.Link href="#pricing">Gdzie działamy</Nav.Link>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Carousel.css";
+import "../sass/components/carousel.css";
 import logo from "../images/fresk-logo.png";
 import eu from "../images/eu.jpg";
 import kurs from "../images/kurs.jpg";
