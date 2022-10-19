@@ -1,4 +1,4 @@
-.nav-link {
+.nav-linky {
   background-image: linear-gradient(to right, rgb(0, 113, 188), rgb(0, 113, 188) 50%, rgb(7, 6, 6) 50%);
   background-size: 200% 100%;
   background-position: -100%;
@@ -11,7 +11,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.nav-link:before {
+.nav-linky:before {
   content: "";
   background: rgb(0, 113, 188);
   display: block;
@@ -23,11 +23,11 @@
   transition: all 0.3s ease-in-out;
 }
 
-.nav-link:hover {
+.nav-linky:hover {
   background-position: 0;
 }
 
-.nav-link:hover::before {
+.nav-linky:hover::before {
   width: 100%;
 }
 

@@ -20,11 +20,11 @@ function Navbar2() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="flex-grow-1 justify-content-evenly">
-                        <Nav.Link class="nav-link" href="#features">Aktualności</Nav.Link>
-                        <Nav.Link href="#pricing">O Fundacji</Nav.Link>
-                        <Nav.Link href="#pricing">Co robimy</Nav.Link>
-                        <Nav.Link href="#pricing">Gdzie działamy</Nav.Link>
-                        <Nav.Link href="#pricing">Kontakt</Nav.Link>
+                        <a className="nav-linky" href="#pricing">Aktualności</a>
+                        <a className="nav-linky" href="#pricing">O Fundacji</a>
+                        <a className="nav-linky" href="#pricing">Co robimy</a>
+                        <a className="nav-linky" href="#pricing">Gdzie działamy</a>
+                        <a className="nav-linky" href="#pricing">Kontakt</a>
 
                     </Nav>
                     <Form className="d-flex">

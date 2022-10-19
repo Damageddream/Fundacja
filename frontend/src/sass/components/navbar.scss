@@ -1,11 +1,11 @@
 @import '../variables/variables.scss';
 
 
-.nav-link {
+.nav-linky {
     background-image: linear-gradient(
       to right,
       $logoblue,
-      $logoblue,
+      $logoblue 50%,
       rgb(7, 6, 6) 50%
     );
     background-size: 200% 100%;
@@ -19,7 +19,7 @@
     transition: all 0.3s ease-in-out;
   }
   
-  .nav-link:before{
+  .nav-linky:before{
     content: '';
     background: $logoblue;
     display: block;
@@ -31,11 +31,11 @@
     transition: all 0.3s ease-in-out;
   }
   
-  .nav-link:hover {
+  .nav-linky:hover {
    background-position: 0;
   }
   
-  .nav-link:hover::before{
+  .nav-linky:hover::before{
     width: 100%;
   }
   
