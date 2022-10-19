@@ -16,7 +16,6 @@ function App() {
       <Carousel2 />
       <Container fluid>
         <Cards />
-        <Karta />
       </Container>
       
       <Footer />

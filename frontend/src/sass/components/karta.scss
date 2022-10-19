@@ -1,23 +1,4 @@
-body {
-
-    margin: 0;
-
-    padding: 0;
-
-    min-height: 100vh;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;  
-
-    font-family: sans-serif;
-
-    background-color: #f1f1f1; 
-
-}
-
+@import '../variables/variables.scss';
 .container .card .icon {
 
     position: absolute;
@@ -30,7 +11,7 @@ body {
 
     height: 100%;
 
-    background: #2c73df;
+    background: #87b3f5;
 
 }
 
@@ -130,7 +111,7 @@ body {
 
     transform: translateX(-50%);
 
-    background: #2c73df;
+    background: #ffffff;
 
 }
 
@@ -159,3 +140,18 @@ body {
     color: #414141;
 
 } 
+
+.container .card {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border: none;
+}
+
+.container .card .icon .fa.fa-user-circle .imgkarta {
+    height: 100%;
+    width: 100%;
+}
