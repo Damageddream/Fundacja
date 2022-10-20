@@ -11,7 +11,7 @@ const Karta = (props) => {
                 <img
                   className="imgkarta"
                   src={props.foto}
-                  alt="Second slide"
+                  alt={props.opis}
                 />
               </i>
             </div>

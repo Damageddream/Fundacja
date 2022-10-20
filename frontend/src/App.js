@@ -1,13 +1,10 @@
 import React from "react";
 import Navbar2 from "./components/Navbar2";
-import Cards from "./components/Cards/Cards"
+import Cards from "./components/Cards/Cards";
 import Footer from "./components/Footer";
 import Carousel2 from "./components/Carousel2";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Container from 'react-bootstrap/Container';
-import Karta from './components/Cards/karta'
-
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import Container from "react-bootstrap/Container";
 
 function App() {
   return (
@@ -17,8 +14,9 @@ function App() {
       <Container fluid>
         <Cards />
       </Container>
-      
-      <Footer />
+      <Container fluid>
+        <Footer />
+      </Container>
     </div>
   );
 }
