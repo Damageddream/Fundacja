@@ -7,7 +7,7 @@ const Karta = (props) => {
         <div className="slide slide1">
           <div className="content">
             <div className="icon">
-              <i className="fa fa-user-circle" aria-hidden="true">
+              <i className="fa" aria-hidden="true">
                 <img
                   className="imgkarta"
                   src={props.foto}
