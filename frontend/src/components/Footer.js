@@ -42,7 +42,7 @@ const Footer = () => {
               <h6 className="text-uppercase fw-bold mb-4">Socialmedia</h6>
               <p>
               <MDBIcon fab icon="facebook" className="me-2" />
-                <a href="#!" className="text-reset">
+                <a href="https://www.facebook.com/fresk.fundacja" className="text-reset">
                   Facebook
                 </a>
               </p>
