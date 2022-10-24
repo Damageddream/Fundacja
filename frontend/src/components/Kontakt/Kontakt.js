@@ -19,10 +19,11 @@ const Kontakt = () => {
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
       <Row>
-        <Col className="justify-content-center mt-5 pl-5">
-          <Row>
-                <Col className="pl-5">
+        <Col className="mt-5 ms-5">
+          <Row className="justify-content-center">
+                <Col>
                   <h4 className='mb-3'>Dane</h4>
+                  
                 </Col>
               </Row>
               <Row>
