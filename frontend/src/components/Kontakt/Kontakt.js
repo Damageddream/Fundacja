@@ -19,7 +19,7 @@ const Kontakt = () => {
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
       <Row>
-        <Col className="mt-5 ms-5">
+        <Col className="mt-5 ms-5 ps-5">
           <Row className="justify-content-center">
                 <Col>
                   <h4 className='mb-3'>Dane</h4>
@@ -28,7 +28,15 @@ const Kontakt = () => {
               </Row>
               <Row>
                 <Col>
-                  <h6 className='mb-3'>Fundacja Rozwoju Edukacji i Społecznej Kreatywności</h6>
+                  <h6 className='mb-3 fw-bold'>Fundacja Rozwoju Edukacji i Społecznej Kreatywności</h6>
+                  <p><div className='fw-bold'>Adres</div> Noniewicza 34 lok.4 16-400 Suwałki</p>
+                  <p><div className='fw-bold'>Mail</div> kontakt.fresk@gmail.com</p>
+                  <p><div className='fw-bold'>Telefon</div> 661 300 803</p>
+                  <p><div className='fw-bold'>NIP</div> 6572174750</p>
+                  <p><div className='fw-bold'>REGON</div> 383642931</p>
+                  <p><div className='fw-bold'>KRS</div> 0000790916</p>
+                  <p><div className='fw-bold'>Numer konta</div> </p>
+
                 </Col>
           </Row>
         </Col>
