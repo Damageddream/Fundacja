@@ -1,6 +1,9 @@
 import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 
 const Kontakt = () => {
   return (
@@ -16,10 +19,41 @@ const Kontakt = () => {
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
       <Row>
-        <Col className="d-flex justify-content-center mt-5">
-        Dane
+        <Col className="justify-content-center mt-5 pl-5">
+          <Row>
+                <Col className="pl-5">
+                  <h4 className='mb-3'>Dane</h4>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <h6 className='mb-3'>Fundacja Rozwoju Edukacji i Społecznej Kreatywności</h6>
+                </Col>
+          </Row>
         </Col>
-        <Col className="d-flex justify-content-center mt-5">
+
+        <Col md={6} className="d-flex justify-content-center mt-5" >
+          <Form className="w-75">
+            <h4 className='mb-3'>Skontakuj się z nami</h4>
+
+            <Form.Group className="mb-3" controlId="mail">
+              <Form.Label>E-mail</Form.Label>
+              <Form.Control type="email" placeholder="Wpisz email...." />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="nazwa">
+              <Form.Label>Imię i nazwisko / nazwa organizacji</Form.Label>
+              <Form.Control type="text" placeholder="Nazwa..." />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="tekst">
+              <Form.Label>Treść</Form.Label>
+              <Form.Control as="textarea" rows={10} />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Wyślij
+            </Button>
+          </Form>
+
         </Col>
       </Row>
     </Row>
