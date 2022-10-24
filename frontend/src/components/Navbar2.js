@@ -5,8 +5,11 @@ import logo from "../images/fresk-logo-beznapi.png";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import "../sass/components/navbar.css";
+import { NavLink } from 'react-router-dom';
 
 function Navbar2() {
+
+
     return (
         <Navbar collapseOnSelect expand="lg" bg="white">
             <Container fluid>
@@ -20,11 +23,11 @@ function Navbar2() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="flex-grow-1 justify-content-evenly">
-                        <a className="nav-linky" href="#pricing">Aktualności</a>
-                        <a className="nav-linky" href="#pricing">O Fundacji</a>
-                        <a className="nav-linky" href="#pricing">Co robimy</a>
-                        <a className="nav-linky" href="#pricing">Gdzie działamy</a>
-                        <a className="nav-linky" href="#pricing">Kontakt</a>
+                        <NavLink to='/' className='nav-linky'>Strona Główna</NavLink>
+                        <NavLink to='/aktualnosci' className='nav-linky'>Aktualności</NavLink>
+                        <NavLink to='/ofundacji' className='nav-linky'>O Fundacji</NavLink>
+                        <NavLink to='/corobimy' className='nav-linky'>Co robimy</NavLink>
+                        <NavLink to='/kontakt' className='nav-linky'>Kontakt</NavLink>
 
                     </Nav>
                     <Form className="d-flex">

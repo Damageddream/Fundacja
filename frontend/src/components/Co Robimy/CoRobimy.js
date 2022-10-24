@@ -1,11 +1,11 @@
 import React from "react";
-import Jumbotron from "../Jumbotron";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Jumbotron from "../Jumbotron";
 
-const Ofundacji = () => {
+const CoRobimy = () => {
   const opis = {
-    title: "Fundacja Rozwoju Edukacji i Społecznej Kreatywności",
+    title: "Projekty i Usługi",
     photo: "src",
   };
   return (
@@ -26,4 +26,4 @@ const Ofundacji = () => {
   );
 };
 
-export default Ofundacji;
+export default CoRobimy;

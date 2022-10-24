@@ -1,15 +1,14 @@
 import React from "react";
 import Navbar2 from "./components/Navbar2";
-import Cards from "./components/Cards/Cards";
 import Footer from "./components/Footer";
-import Carousel2 from "./components/Carousel2";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
-import Main from './components/Main page/main'
-import { Link, Route, Routes } from 'react-router-dom';
+import MainPage from "./components/Main page/mainpage";
+import { Route, Routes } from 'react-router-dom';
 import Aktualnosci from "./components/Aktualnosci/Aktualnosci";
 import Kontakt from "./components/Kontakt/Kontakt";
 import Ofundacji from "./components/O Fundacji/Ofundacji";
+import CoRobimy from "./components/Co Robimy/CoRobimy";
 
 
 
@@ -18,11 +17,13 @@ function App() {
   return (
     <div>
       <Navbar2 />
-      <Carousel2 />
-      <Container fluid>
-        <Cards />
-        <Main />
-      </Container>
+      <Routes>
+        <Route path='/' element={<MainPage />} />
+        <Route path='/ofundacji' element={<Ofundacji />} />
+        <Route path='/corobimy' element={<CoRobimy />} />
+        <Route path='/aktualnosci' element={<Aktualnosci />} />
+        <Route path='/kontakt' element={<Kontakt />} />
+      </Routes>
       <Container fluid>
         <Footer />
       </Container>
