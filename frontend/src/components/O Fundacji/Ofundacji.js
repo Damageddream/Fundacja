@@ -10,25 +10,17 @@ const Ofundacji = () => {
     photo: "src",
   };
 
- //variables with content of page
-  const oNas = <p>
-    o fundacji
-  </p>
+  //variables with content of page
+  const oNas = <p>o fundacji</p>;
 
-  const historia=<p>
-    historia
-  </p>
+  const historia = <p>historia</p>;
 
-  const rada = <p>
-    rada i zarząd
-  </p>
+  const rada = <p>rada i zarząd</p>;
 
-  const zespol = <p>
-    zespol
-  </p>
-  
+  const zespol = <p>zespol</p>;
+
   //Changes between contents
-  const [content, setOpis]= useState(oNas);
+  const [content, setOpis] = useState(oNas);
 
   //Setting className to active or ''
   const [isActiveh, setIsActiveh] = useState(false);
@@ -36,41 +28,83 @@ const Ofundacji = () => {
   const [isActiver, setIsActiver] = useState(false);
   const [isActivez, setIsActivez] = useState(false);
 
+  //seeting one of list items as active and rest as inactive
   const historiaHandler = () => {
-    setOpis(historia)
-    setIsActiveh(current => !current);
-  }
+    setOpis(historia);
+    setIsActiveh(true);
+    setIsActiver(false);
+    setIsActivez(false);
+    setIsActiveo(false);
+  };
   const radaHandler = () => {
-    setOpis(rada)
-    setIsActiver(current => !current);
-  }
+    setOpis(rada);
+    setIsActiver(true);
+    setIsActiveh(false);
+    setIsActivez(false);
+    setIsActiveo(false);
+  };
   const zespolHandler = () => {
-    setOpis(zespol)
-    setIsActivez(current => !current);
-  }
+    setOpis(zespol);
+    setIsActivez(true);
+    setIsActiver(false);
+    setIsActiveh(false);
+    setIsActiveo(false);
+  };
 
   const oNasHandler = () => {
-    setOpis(oNas)
-    setIsActiveo(current => !current);
-  }
+    setOpis(oNas);
+    setIsActiveo(true);
+    setIsActiver(false);
+    setIsActivez(false);
+    setIsActiveh(false);
+  };
   return (
     <div>
       <Jumbotron title={opis.title} photo={opis.photo} />
       <Row>
-        <Col className='mt-5'>
+        <Col></Col>
+        <Col className="mt-5">
           <ListGroup as="ul">
-            <ListGroup.Item as="li" onClick={oNasHandler} className={isActiveo ? 'list-group-item active' : 'list-group-item'}>
+            <ListGroup.Item
+              as="li"
+              onClick={oNasHandler}
+              className={
+                isActiveo ? "list-group-item active" : "list-group-item"
+              }
+            >
               O nas
             </ListGroup.Item>
-            <ListGroup.Item as="li" onClick={historiaHandler} className={isActiveh ? 'list-group-item active' : 'list-group-item'}>Historia Fundacji</ListGroup.Item>
-            <ListGroup.Item as="li" onClick={radaHandler}>
+            <ListGroup.Item
+              as="li"
+              onClick={historiaHandler}
+              className={
+                isActiveh ? "list-group-item active" : "list-group-item"
+              }
+            >
+              Historia Fundacji
+            </ListGroup.Item>
+            <ListGroup.Item
+              as="li"
+              onClick={radaHandler}
+              className={
+                isActiver ? "list-group-item active" : "list-group-item"
+              }
+            >
               Rada i Zarząd
             </ListGroup.Item>
-            <ListGroup.Item as="li" onClick={zespolHandler}>Zespół</ListGroup.Item>
+            <ListGroup.Item
+              as="li"
+              onClick={zespolHandler}
+              className={
+                isActivez ? "list-group-item active" : "list-group-item"
+              }
+            >
+              Zespół
+            </ListGroup.Item>
           </ListGroup>
         </Col>
-        <Col xs={8} className='mt-5'>
-            {content}
+        <Col xs={8} className="mt-5">
+          {content}
         </Col>
       </Row>
     </div>
