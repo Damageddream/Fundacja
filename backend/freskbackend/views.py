@@ -1,11 +1,11 @@
 from django.shortcuts import render
 
 from rest_framework import viewsets
-from .serializers import TodoSerializer
-from .models import Todo
+from .serializers import AktualnosciSerializer
+from .models import Todo, Aktualnosci
 
 # Create your views here.
 
-class TodoView(viewsets.ModelViewSet):
-    serializer_class = TodoSerializer
-    queryset = Todo.objects.all()
+class AktualnosciView(viewsets.ModelViewSet):
+    serializer_class = AktualnosciSerializer
+    queryset = Aktualnosci.objects.all()

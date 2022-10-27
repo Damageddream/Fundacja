@@ -1,9 +1,22 @@
-import React from "react";
+import { useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Jumbotron from "../Jumbotron";
+import  axios from "axios";
 
 const Aktualnosci = () => {
+
+  const [aktualnosci, setAktualnosci] = useState(null)
+
+  const getAktualnosci = () => {
+    axios({
+      method: 'GET',
+      url:"/api/aktualnoscis/1/?format=json",
+    })
+    .then((response)=> response.json())
+    .then((data) => console.log(data))
+  }
+  console.log(aktualnosci)
   const opis = {
     title: "Aktualności",
     photo: "src",

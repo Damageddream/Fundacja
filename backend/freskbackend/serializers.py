@@ -1,7 +1,8 @@
 from rest_framework import serializers
-from .models import Todo
+from .models import Aktualnosci
 
-class TodoSerializer(serializers.ModelSerializer):
+
+class AktualnosciSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Todo
-        fields = ('id', 'title', 'description', 'completed')
+        model = Aktualnosci
+        fields = ('id', 'poster', 'title', 'title_image', 'content', 'date', 'archived')

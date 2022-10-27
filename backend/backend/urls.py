@@ -19,7 +19,7 @@ from rest_framework import routers
 from freskbackend import views
 
 router = routers.DefaultRouter()
-router.register(r'todos', views.TodoView, 'todo')
+router.register(r'aktualnoscis', views.AktualnosciView, 'aktualnosci')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

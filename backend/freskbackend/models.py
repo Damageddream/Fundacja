@@ -22,4 +22,7 @@ class Aktualnosci(models.Model):
     content = RichTextField(blank=True, null=True)
     date = models.DateTimeField(auto_now_add=True)
     archived = models.BooleanField(default=False)
+
+    def _str_(self):
+        return self.title
     

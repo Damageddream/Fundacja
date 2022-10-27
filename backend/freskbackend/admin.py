@@ -4,6 +4,8 @@ from .models import Todo, User, Aktualnosci
 
 class TodoAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'completed')
+class AktualnosciAdmin(admin.ModelAdmin):
+    list_display = ('poster', 'title', 'title_image', 'content', 'date', 'archived')
 
 # Register your models here.
 
