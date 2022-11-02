@@ -1,9 +1,7 @@
-import { useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Jumbotron from "../Jumbotron";
-import axios from "axios";
-import Notes from "../Notes"
+import ListaAktualnosci from "./ListaAktualnosci"
 
 const Aktualnosci = () => {
   const opis = {
@@ -14,7 +12,8 @@ const Aktualnosci = () => {
   return (
     <div>
       <Jumbotron title={opis.title} photo={opis.photo} />
-      <Notes />
+      <a class="btn btn-primary" href="http://127.0.0.1:8000/add_wydarzenie/" role="button">Dodaj wydarzenie</a>
+      <ListaAktualnosci />
     </div>
   );
 };

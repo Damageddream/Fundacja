@@ -20,8 +20,10 @@ from freskbackend import views
 
 router = routers.DefaultRouter()
 router.register(r'aktualnoscis', views.AktualnosciView, 'aktualnosci')
+router.register(r'users', views.UserView, 'user')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('add_wydarzenie/', views.add_wydarzenie, name='add_wydarzenie'),
 ]
