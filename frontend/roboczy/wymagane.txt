@@ -1,5 +1,5 @@
 react, react-router-dom
 django, django-rest-framework, 
 boostrap, mdb-react-ui-kit,
-Django: ckeditor, corsheaders
+Django: ckeditor, corsheaders, pillow
 JS: moment, axios

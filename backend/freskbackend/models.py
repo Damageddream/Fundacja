@@ -12,7 +12,7 @@ class User(AbstractUser):
 class Aktualnosci(models.Model):
     poster = models.ForeignKey(User, models.SET_NULL, null=True, related_name="poster")
     title = models.CharField(max_length=64, )
-    title_image = models.URLField(max_length=200)
+    title_image = models.ImageField(null=True, blank=True, upload_to="images/")
     content = RichTextField(blank=True, null=True)
     content_preview = RichTextField(blank=True, null=True)
     date = models.DateTimeField(auto_now_add=True)
