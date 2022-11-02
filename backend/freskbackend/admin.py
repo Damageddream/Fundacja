@@ -4,7 +4,7 @@ from .models import User, Aktualnosci
 
 
 class AktualnosciAdmin(admin.ModelAdmin):
-    list_display = ('poster', 'title', 'title_image', 'content', 'date', 'archived')
+    list_display = ('poster', 'title', 'title_image', 'content', 'date', 'archived', 'images', 'downloads')
 
 # Register your models here.
 

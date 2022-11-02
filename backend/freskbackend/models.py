@@ -17,6 +17,8 @@ class Aktualnosci(models.Model):
     content_preview = RichTextField(blank=True, null=True)
     date = models.DateTimeField(auto_now_add=True)
     archived = models.BooleanField(default=False)
+    images = models.ImageField(null=True, blank=True, upload_to="images/")
+    downloads = models.FileField(null=True, blank=True, upload_to="images/")
 
     def _str_(self):
         return self.title
