@@ -16,52 +16,47 @@
     <div class="row justify-content-center mt-5">
       <div class="col-6 bg-light">
         <h4 class="text-center">Stwórz wydarzenie</h4>
-        <div class="input-group mb-3">
-          <span class="input-group-text">Tytuł</span>
-          <input type="text" class="form-control" placeholder="..." aria-label="title">
-        </div>
-        <div class="input-group mb-3">
-          <input type="file" class="custom-file-input" id="customFile">
-          <label class="custom-file-label text-center" for="customFile">Wybierz zdjęcie tytułowe</label>
-        </div>
-        <div class="input-group mb-3">
-          <span class="input-group-text">Wstęp</span>
-          <textarea class="form-control" aria-label="tresc" name="content" id="editor2"></textarea>
-        </div>
-        <div class="input-group mb-3">
-          <span class="input-group-text">Treść</span>
-          <textarea class="form-control" aria-label="tresc" name="content" id="editor"></textarea>
-        </div>
-        <div class="input-group mb-3">
-          <input type="file" class="custom-file-input" id="customFile" multiple>
-          <label class="custom-file-label text-center" for="customFile">Wybierz zdjęcia do galerii</label>
-        </div>
-        <div class="input-group mb-3">
-          <input type="file" class="custom-file-input" id="customFile" multiple>
-          <label class="custom-file-label text-center" for="customFile">Wybierz pliki do pobierania</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="archiwizuj">
-          <label class="form-check-label" for="archiwizuj">
-            Archiwizuj
-          </label>
-        </div>
-        <button type="submit" class="btn btn-primary mt-5 mb-2">Dodaj wydarzenie</button>
+        <form action="{% url 'add_wydarzenie' %}" method="post" id="wydarzenie_form" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="input-group mb-3">
+            <span class="input-group-text">Tytuł</span>
+            <input type="text" class="form-control" placeholder="..." aria-label="tytul" name="tytul">
+          </div>
+          <div class="input-group mb-3">
+            <input type="file" class="custom-file-input" id="customFile" name="title_image">
+            <label class="custom-file-label text-center" for="customFile">Wybierz zdjęcie tytułowe</label>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text">Wstęp</span>
+            <textarea class="form-control" aria-label="tresc" id="editor2" name="preview" form="wydarzenie_form"></textarea>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text">Treść</span>
+            <textarea class="form-control" aria-label="tresc" id="editor" name="content" form="wydarzenie_form"></textarea>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="archiwizuj">
+            <label class="form-check-label" for="archiwizuj">
+              Archiwizuj
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary mt-5 mb-2">Dodaj wydarzenie</button>
+        </form>
       </div>
     </div>
   </div>
   <script>
     ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+      .create(document.querySelector('#editor'))
+      .catch(error => {
+        console.error(error);
+      });
     ClassicEditor
-        .create( document.querySelector( '#editor2' ) )
-        .catch( error => {
-            console.error( error );
-        } );
-</script>
+      .create(document.querySelector('#editor2'))
+      .catch(error => {
+        console.error(error);
+      });
+  </script>
 
 </body>
 
