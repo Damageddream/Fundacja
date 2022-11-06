@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import axios from "axios";
 import Wydarzenie from "./Wydarzenie";
 
@@ -30,27 +32,35 @@ function ListaAktualnosci() {
       });
     setIsLoading(false);
   }
-  console.log(aktualnosci)
+  console.log(aktualnosci);
 
   return (
-    <div className="">
-      {isLoading && <p>Trwa pobieranie aktualności</p>}
+    <div className="d-flex justify-content-center">
+      <Row>
+        <Col>
+          {isLoading && <p>Trwa pobieranie aktualności</p>}
 
-      {!isLoading && aktualnosci.length === 0 && !error && <p>Brak Aktualności</p>}
+          {!isLoading && aktualnosci.length === 0 && !error && (
+            <p>Brak Aktualności</p>
+          )}
 
-      {!isLoading && error && <p>Wystąpił błąd: {error}</p>}
+          {!isLoading && error && <p>Wystąpił błąd: {error}</p>}
 
-      {!error && aktualnosci &&
-        aktualnosci.map((wydarzenie) => (
-          <Wydarzenie
-            key={wydarzenie.id}
-            title={wydarzenie.title}
-            title_image={wydarzenie.title_image}
-            content={wydarzenie.content}
-            date={wydarzenie.date}
-            username={wydarzenie.username}
-          />
-        ))}
+          {!error &&
+            aktualnosci &&
+            aktualnosci.map((wydarzenie) => (
+              <Wydarzenie
+                key={wydarzenie.id}
+                id={wydarzenie.id}
+                title={wydarzenie.title}
+                title_image={wydarzenie.title_image}
+                content={wydarzenie.content}
+                date={wydarzenie.date}
+                username={wydarzenie.username}
+              />
+            ))}
+        </Col>
+      </Row>
     </div>
   );
 }
