@@ -3,11 +3,14 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
 import Wydarzenie from "./Wydarzenie";
+import Paginat from "./Pagination";
 
 function ListaAktualnosci() {
   const [aktualnosci, setNewAktualnosci] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(5);
 
   useEffect(() => {
     getAktulanosci();
@@ -34,6 +37,10 @@ function ListaAktualnosci() {
   }
   console.log(aktualnosci);
 
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = aktualnosci.slice(indexOfFirstPost, indexOfLastPost)
+
   return (
     <div className="d-flex justify-content-center">
       <Row>
@@ -47,8 +54,8 @@ function ListaAktualnosci() {
           {!isLoading && error && <p>Wystąpił błąd: {error}</p>}
 
           {!error &&
-            aktualnosci &&
-            aktualnosci.map((wydarzenie) => (
+            currentPosts &&
+            currentPosts.map((wydarzenie) => (
               <Wydarzenie
                 key={wydarzenie.id}
                 id={wydarzenie.id}
@@ -61,6 +68,12 @@ function ListaAktualnosci() {
             ))}
         </Col>
       </Row>
+      <Row>
+        <Col>
+        <Paginat />
+        </Col>
+      </Row>
+
     </div>
   );
 }
