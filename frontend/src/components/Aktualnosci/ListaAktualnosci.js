@@ -6,7 +6,6 @@ import Wydarzenie from "./Wydarzenie";
 import Paginat from "./Pagination";
 
 function ListaAktualnosci() {
-
   // getting all of aktualnosci from backend
   const [aktualnosci, setNewAktualnosci] = useState([]);
   // setting loading state
@@ -14,17 +13,15 @@ function ListaAktualnosci() {
   // setting for instance of error
   const [error, setError] = useState();
 
-  //pagination states 
+  //pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
   const [active, setActive] = useState(1);
-
 
   //fires function for getting data from backend after page loads
   useEffect(() => {
     getAktulanosci();
   }, []);
-
 
   // fetching aktualnosci from backend
   function getAktulanosci() {
@@ -51,14 +48,13 @@ function ListaAktualnosci() {
   // pagination variables
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = aktualnosci.slice(indexOfFirstPost, indexOfLastPost)
+  const currentPosts = aktualnosci.slice(indexOfFirstPost, indexOfLastPost);
 
   //change page in pagination
-  const paginate = pageNumber => {
-    setCurrentPage(pageNumber)
-    setActive(pageNumber)
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    setActive(pageNumber);
   };
-
 
   return (
     <div className="d-flex justify-content-center">
@@ -84,20 +80,19 @@ function ListaAktualnosci() {
                 date={wydarzenie.date}
                 username={wydarzenie.username}
               />
-
             ))}
           <Row>
-          <Col className="d-flex justify-content-center">
-          <Paginat postsPerPage={postsPerPage}
-            totalPosts={aktualnosci.length}
-            paginate={paginate}
-            active={active} />
-          </Col>
+            <Col className="d-flex justify-content-center">
+              <Paginat
+                postsPerPage={postsPerPage}
+                totalPosts={aktualnosci.length}
+                paginate={paginate}
+                active={active}
+              />
+            </Col>
           </Row>
         </Col>
       </Row>
-
-
     </div>
   );
 }
