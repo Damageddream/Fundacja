@@ -1,23 +1,35 @@
 import Pagination from 'react-bootstrap/Pagination';
 
-function Paginat() {
+function Paginat({ postsPerPage, totalPosts, paginate, active }) {
+  const PageNumbers = [];
+  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+    PageNumbers.push(i);
+  }
   return (
     <Pagination>
-      <Pagination.First />
-      <Pagination.Prev />
-      <Pagination.Item>{1}</Pagination.Item>
-      <Pagination.Ellipsis />
+      <Pagination.Prev
+        onClick={() => {
+          if (active > 1) {
+            paginate(active - 1);
+          }
+        }}
+      />
+      {PageNumbers.map(number => (
+        <Pagination.Item key={number}
+          onClick={() => { paginate(number) }}
+          active={number === active}
+        >
+          {number}
+        </Pagination.Item>
+      ))}
+      <Pagination.Next
+        onClick={() => {
+          if (active < 5) {
+            paginate(active + 1);
+          }
+        }}
+      />
 
-      <Pagination.Item>{10}</Pagination.Item>
-      <Pagination.Item>{11}</Pagination.Item>
-      <Pagination.Item active>{12}</Pagination.Item>
-      <Pagination.Item>{13}</Pagination.Item>
-      <Pagination.Item disabled>{14}</Pagination.Item>
-
-      <Pagination.Ellipsis />
-      <Pagination.Item>{20}</Pagination.Item>
-      <Pagination.Next />
-      <Pagination.Last />
     </Pagination>
   );
 }

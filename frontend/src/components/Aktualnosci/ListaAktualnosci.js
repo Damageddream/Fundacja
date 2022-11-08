@@ -6,16 +6,27 @@ import Wydarzenie from "./Wydarzenie";
 import Paginat from "./Pagination";
 
 function ListaAktualnosci() {
-  const [aktualnosci, setNewAktualnosci] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(5);
 
+  // getting all of aktualnosci from backend
+  const [aktualnosci, setNewAktualnosci] = useState([]);
+  // setting loading state
+  const [isLoading, setIsLoading] = useState(false);
+  // setting for instance of error
+  const [error, setError] = useState();
+
+  //pagination states 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
+  const [active, setActive] = useState(1);
+
+
+  //fires function for getting data from backend after page loads
   useEffect(() => {
     getAktulanosci();
   }, []);
 
+
+  // fetching aktualnosci from backend
   function getAktulanosci() {
     setIsLoading(true);
     axios({
@@ -37,9 +48,17 @@ function ListaAktualnosci() {
   }
   console.log(aktualnosci);
 
+  // pagination variables
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = aktualnosci.slice(indexOfFirstPost, indexOfLastPost)
+
+  //change page in pagination
+  const paginate = pageNumber => {
+    setCurrentPage(pageNumber)
+    setActive(pageNumber)
+  };
+
 
   return (
     <div className="d-flex justify-content-center">
@@ -65,14 +84,19 @@ function ListaAktualnosci() {
                 date={wydarzenie.date}
                 username={wydarzenie.username}
               />
+
             ))}
+          <Row>
+          <Col className="d-flex justify-content-center">
+          <Paginat postsPerPage={postsPerPage}
+            totalPosts={aktualnosci.length}
+            paginate={paginate}
+            active={active} />
+          </Col>
+          </Row>
         </Col>
       </Row>
-      <Row>
-        <Col>
-        <Paginat />
-        </Col>
-      </Row>
+
 
     </div>
   );
