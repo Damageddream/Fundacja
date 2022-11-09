@@ -20,3 +20,14 @@ class Aktualnosci(models.Model):
 
     def _str_(self):
         return self.title
+    def serialize(self):
+        return {
+            'id': self.id,
+            'poster': self.poster.username,
+            'title': self.title,
+            'title_image': self.title_image,
+            'content': self.content,
+            'content_preview': self.content_preview,
+            'date': self.date,
+            'archived': self.archived
+        }

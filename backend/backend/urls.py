@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 router = routers.DefaultRouter()
 router.register(r'aktualnoscis', views.AktualnosciView, 'aktualnosci')
 router.register(r'users', views.UserView, 'user')
-router.register(r'^(?P<pk>\d+)/$', views.AktualnosciDetailAPIView, 'aktualnosci_detail')
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

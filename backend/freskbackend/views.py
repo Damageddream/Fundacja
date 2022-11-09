@@ -2,22 +2,22 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from .serializers import AktualnosciSerializer, UserSerializer
 from .models import User, Aktualnosci
-from rest_framework.generics import RetrieveAPIView
+from rest_framework.response import Response
+from rest_framework import status
 
 # Create your views here.
 
 class AktualnosciView(viewsets.ModelViewSet):
     serializer_class = AktualnosciSerializer
     queryset = Aktualnosci.objects.all()
+    def retrieve(self, request, pk=None):
+        instance = self.get_object()
+        return Response(self.serializer_class(instance).data, status=status.HTTP_200_OK)
        
 
 class UserView(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
-
-class AktualnosciDetailAPIView(RetrieveAPIView):
-    serializer_class = AktualnosciSerializer
-    queryset = Aktualnosci.objects.all()
 
 def add_wydarzenie(request):
     if request.method == "POST":
@@ -35,6 +35,5 @@ def add_wydarzenie(request):
 
     else:
         return render(request, 'add_wydarzenie.html')
-
 
 
