@@ -1,2 +1,2 @@
       
- 
+ <Jumbotron title={opis.title} photo={opis.photo} />
