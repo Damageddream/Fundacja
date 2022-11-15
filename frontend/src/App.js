@@ -10,6 +10,10 @@ import Kontakt from "./components/Kontakt/Kontakt";
 import Ofundacji from "./components/O Fundacji/Ofundacji";
 import CoRobimy from "./components/Co Robimy/CoRobimy";
 import WydarzenieOsobno from "./components/Aktualnosci/WydarzenieOsobno";
+import Projekty from "./components/Co Robimy/Projekty";
+import Dotacje from "./components/Co Robimy/Dotacje";
+import Uslugi from "./components/Co Robimy/Uslugi";
+
 
 function App() {
   return (
@@ -18,7 +22,12 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/ofundacji" element={<Ofundacji />} />
-        <Route path="/corobimy" element={<CoRobimy />} />
+        <Route path="/corobimy">
+          <Route index element={<CoRobimy />} />
+          <Route path="/corobimy/projekty" element={<Projekty />} />
+          <Route path="/corobimy/dotacje" element={<Dotacje />} />
+          <Route path="/corobimy/uslugi" element={<Uslugi />} />
+        </Route>
         <Route path="/aktualnosci">
           <Route index element={<Aktualnosci />} />
           <Route path="/aktualnosci/:id" element={<WydarzenieOsobno />} />

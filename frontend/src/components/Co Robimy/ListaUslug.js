@@ -2,26 +2,32 @@ import "../../sass/components/listauslug.css";
 import eu from "../../images/eu.jpg";
 import kurs from "../../images/kurs.jpg";
 import sala from "../../images/sala.jpg";
+import { Link } from "react-router-dom";
+
 const ListaUslug = () => {
     return (
-        <div className="container">
-            <div id="marketing" className="section" style={{backgroundImage:`url(${eu})`}}>
-                <div className="content">
-                    <h1>Dotacje</h1>
+        <div className="containeru">
+            <div  className="sectionu" style={{ backgroundImage: `url(${eu})` }}>
+                <div className="contentu">
+                <Link className='text-white' to={'/corobimy/dotacje'}><h1>Dotacje</h1></Link>
                 </div>
-                <div className="overlay"></div>
+                <div className="overlayu"></div>
             </div>
-            <div id="technology" className="section" style={{backgroundImage:`url(${kurs})`}}>
-                <div className="content">
-                    <h1>Projekty</h1>
+            
+                <div  className="sectionu" style={{ backgroundImage: `url(${kurs})` }}>
+                    <div className="contentu">
+                        <Link className='text-white' to={'/corobimy/projekty'}><h1>Projekty</h1></Link>
+                    </div>
+                    <div className="overlayu"></div>
+
+
                 </div>
-                <div className="overlay"></div>
-            </div>
-            <div id="advertising" className="section" style={{backgroundImage:`url(${sala})`}}>
-                <div className="content">
-                    <h1>Usługi</h1>
+            
+            <div  className="sectionu" style={{ backgroundImage: `url(${sala})` }}>
+                <div className="contentu">
+                <Link className='text-white' to={'/corobimy/uslugi'}><h1>Usługi</h1></Link>
                 </div>
-                <div className="overlay"></div>
+                <div className="overlayu"></div>
             </div>
         </div>
     )

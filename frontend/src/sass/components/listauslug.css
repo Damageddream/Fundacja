@@ -8,12 +8,12 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-.container {
+.containeru {
   display: flex;
   height: 100vh;
 }
 
-.section {
+.sectionu {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -27,7 +27,7 @@ body {
   position: relative;
 }
 
-.section .overlay {
+.sectionu .overlayu {
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   height: 100%;
@@ -35,14 +35,14 @@ body {
   transition: background-color 0.8s ease;
 }
 
-.section .content {
+.sectionu .contentu {
   z-index: 2;
 }
 
-.section:hover {
+.sectionu:hover {
   flex: 2;
 }
 
-.section:hover .overlay {
+.sectionu:hover .overlayu {
   background-color: rgba(0, 0, 0, 0.95);
 }/*# sourceMappingURL=listauslug.css.map */
