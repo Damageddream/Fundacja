@@ -9,7 +9,7 @@ class AktualnosciSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Aktualnosci
-        fields = ('id', 'poster', 'title', 'title_image', 'content', 'date', 'archived', 'username')
+        fields = ('id', 'poster', 'title', 'title_image', 'content','content_preview', 'date', 'archived', 'username')
 
     def get_username(self, name):
         username = name.poster.username

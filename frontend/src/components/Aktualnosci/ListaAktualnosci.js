@@ -42,8 +42,9 @@ function ListaAktualnosci() {
         }
       });
     setIsLoading(false);
+    console.log(aktualnosci)
   }
-  console.log(aktualnosci);
+
 
   // pagination variables
   const indexOfLastPost = currentPage * postsPerPage;
@@ -77,6 +78,7 @@ function ListaAktualnosci() {
                 title={wydarzenie.title}
                 title_image={wydarzenie.title_image}
                 content={wydarzenie.content}
+                contentPreview={wydarzenie.content_preview}
                 date={wydarzenie.date}
                 username={wydarzenie.username}
               />

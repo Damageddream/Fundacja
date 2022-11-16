@@ -10,7 +10,7 @@ function Wydarzenie(props) {
   const formatDate = Moment(props.date).format("DD.MM.YYYY");
 
   //exchanging string from datababse text editor into html
-  const content = { __html: props.content };
+  const content = { __html: props.contentPreview };
 
   return (
     <div className="my-5">

@@ -42,18 +42,19 @@ const WydarzenieOsobno = () => {
     <Row>
       <Col className='d-flex flex-column align-items-center'>
         <Row>
+          {Moment(aktualnosci.date).format("DD.MM.YYYY")}
+
+        </Row>
+        <Row>
+        <h1>{aktualnosci.title}</h1>
+        </Row>
+        <Row>
+          
           <img
             className="newsPhoto"
             src={aktualnosci.title_image}
             alt={aktualnosci.title}
           />
-        </Row>
-        <Row>
-          {aktualnosci.title}
-        </Row>
-        <Row>
-          {aktualnosci.username}
-          {Moment(aktualnosci.date).format("DD.MM.YYYY")}
         </Row>
         <Row>
           <div dangerouslySetInnerHTML={{ __html: aktualnosci.content }} />
