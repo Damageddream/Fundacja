@@ -23,6 +23,8 @@ from django.conf.urls.static import static
 router = routers.DefaultRouter()
 router.register(r'aktualnoscis', views.AktualnosciView, 'aktualnosci')
 router.register(r'users', views.UserView, 'user')
+router.register(r'photos', views.PhotosView, 'photo')
+router.register(r'files', views.DownloadFileView, 'file')
 
 
 urlpatterns = [

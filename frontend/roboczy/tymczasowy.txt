@@ -1,2 +1,16 @@
-      
- <Jumbotron title={opis.title} photo={opis.photo} />
+  const handleSubmit = (event) => {
+    setIsLoading(true);
+    event.preventDefault()
+      axios({
+        method: "POST",
+        url: "/api/photos/",
+        data: {
+          image: form.value,
+          wydarzenie: props.wydarzenie,
+        },
+      }).catch((error) => {
+        setErrors(error);
+      })
+    
+    setIsLoading(false);
+  };

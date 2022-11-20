@@ -31,3 +31,12 @@ class Aktualnosci(models.Model):
             'date': self.date,
             'archived': self.archived
         }
+
+class Photos(models.Model):
+    wydarzenie = models.ForeignKey(Aktualnosci, models.SET_NULL, null=True, related_name="wydarzenie_photos")
+    image = models.ImageField(null=True, blank=True, upload_to="images/")
+
+class DownloadFile(models.Model):
+    wydarzenie = models.ForeignKey(Aktualnosci, models.SET_NULL, null=True, related_name="wydarzenie_files")
+    file = models.FileField(null=True, blank=True, upload_to="images/")
+

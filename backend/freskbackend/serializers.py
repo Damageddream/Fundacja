@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Aktualnosci, User
+from .models import Aktualnosci, User, Photos, DownloadFile
 
 
 
@@ -18,4 +18,14 @@ class AktualnosciSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
+        fields = ('__all__')
+
+class PhotosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Photos
+        fields = ('__all__')
+
+class DownloadFileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DownloadFile
         fields = ('__all__')

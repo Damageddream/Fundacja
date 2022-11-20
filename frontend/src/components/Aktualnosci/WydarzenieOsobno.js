@@ -1,22 +1,39 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate} from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Moment from "moment";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from 'react-bootstrap/Button';
+import Plik from "./Dodaj do wydarzenia/Plik";
+import Obraz from "./Dodaj do wydarzenia/Obraz";
 
 const WydarzenieOsobno = () => {
 
-
+  
+  let navigate = useNavigate();
 
   const location = useLocation()
   const [aktualnosci, setNewAktualnosci] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
 
+
   useEffect(() => {
     getAktulanosci();
   }, []);
+
+  let locationId = location.pathname.slice(-1)
+  function deleteAktualnosci() {
+    axios({
+      method: 'DELETE',
+      url: `/api/aktualnoscis/${location.state}/`,
+    })
+    .then(() => {
+      navigate('/aktualnosci')
+
+    })
+  }
 
   function getAktulanosci() {
     setIsLoading(true);
@@ -40,6 +57,9 @@ const WydarzenieOsobno = () => {
   }
   return (
     <Row>
+      <Button variant='danger' onClick={deleteAktualnosci}>Usuń wydarzenie</Button>
+      <Plik />
+      <Obraz wydarzenie={locationId} />
       <Col className='d-flex flex-column align-items-center'>
         <Row>
           {Moment(aktualnosci.date).format("DD.MM.YYYY")}

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import User, Aktualnosci
+from .models import User, Aktualnosci, Photos, DownloadFile
 
 
 class AktualnosciAdmin(admin.ModelAdmin):
@@ -11,4 +11,7 @@ class AktualnosciAdmin(admin.ModelAdmin):
 
 admin.site.register(User)
 admin.site.register(Aktualnosci)
+admin.site.register(Photos)
+admin.site.register(DownloadFile)
+
 
