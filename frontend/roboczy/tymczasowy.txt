@@ -1,16 +1,5 @@
-  const handleSubmit = (event) => {
-    setIsLoading(true);
-    event.preventDefault()
-      axios({
-        method: "POST",
-        url: "/api/photos/",
-        data: {
-          image: form.value,
-          wydarzenie: props.wydarzenie,
-        },
-      }).catch((error) => {
-        setErrors(error);
-      })
-    
-    setIsLoading(false);
-  };
+  const handleImageChange = (e) => {
+    let newImage = {...form};
+    newImage['image'] = e.target.files[0];
+    setForm(newImage)
+  }

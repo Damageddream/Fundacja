@@ -21,6 +21,10 @@ function Obraz(props) {
 
   const handleImageChange = (e) => {
     let newImage = {...form};
+    //for (let i = 0; i < e.target.files.length; i++) {
+
+    //}
+    //console.log(e.target.files.length)
     newImage['image'] = e.target.files[0];
     setForm(newImage)
   }
@@ -30,10 +34,12 @@ function Obraz(props) {
   formForm.append('image', form.image)
   formForm.append('wydarzenie', form.wydarzenie)
 
+
   //Submit and create image in galery
   const handleSubmit = (event) => {
     setIsLoading(true);
     event.preventDefault()
+    
       axios({
         method: "POST",
         url: "/api/photos/",
