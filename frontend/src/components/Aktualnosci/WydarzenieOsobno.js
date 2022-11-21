@@ -4,9 +4,9 @@ import axios from "axios";
 import Moment from "moment";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from 'react-bootstrap/Button';
 import Plik from "./Dodaj do wydarzenia/Plik";
 import Obraz from "./Dodaj do wydarzenia/Obraz";
+import UsunWydarzenie from "./Dodaj do wydarzenia/UsunWydarzenie";
 
 const WydarzenieOsobno = () => {
 
@@ -57,7 +57,7 @@ const WydarzenieOsobno = () => {
   }
   return (
     <Row>
-      <Button variant='danger' onClick={deleteAktualnosci}>Usuń wydarzenie</Button>
+      <UsunWydarzenie wydarzenie={locationId} />
       <Plik />
       <Obraz wydarzenie={locationId} />
       <Col className='d-flex flex-column align-items-center'>

@@ -59,7 +59,7 @@ function Obraz(props) {
           <Modal.Title>Galeria</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <Form>
+            <Form id='addphoto'>
               <Form.Group controlId="formFileMultiple" className="mb-3">
                 <Form.Label>Dodaj zdjęcia do galerii</Form.Label>
                 <Form.Control 
@@ -73,12 +73,12 @@ function Obraz(props) {
                     {errors}
                 </Form.Control.Feedback>
               </Form.Group>
-              <Button variant="primary" type="submit" onClick={handleSubmit}>
-                Dodaj zdjęcia
-              </Button>
             </Form>
         </Modal.Body>
         <Modal.Footer>
+           <Button variant="primary" form='addphoto' type="submit" onClick={handleSubmit}>
+                Dodaj zdjęcia
+              </Button>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
