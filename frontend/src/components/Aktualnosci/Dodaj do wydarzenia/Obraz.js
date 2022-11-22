@@ -12,27 +12,34 @@ function Obraz(props) {
   const handleShow = () => setShow(true);
 
   // state for Form - form - storing form data, and isLoading - display when data is loading, error - handling errors
-  const [form, setForm] = useState({
+  const [form, setForm] = useState([{
     image: '',
     wydarzenie: props.wydarzenie
-  })
+  }])
   const [errors, setErrors] = useState()
   const [isLoading, setIsLoading] = useState(false);
 
   const handleImageChange = (e) => {
-    let newImage = {...form};
-    //for (let i = 0; i < e.target.files.length; i++) {
+    let newImage = [{...form}];
 
-    //}
-    //console.log(e.target.files.length)
-    newImage['image'] = e.target.files[0];
+    for(let i = 0; i <  e.target.files.length; i++){
+      newImage.push({'image': e.target.files[i],
+      'wydarzenie':props.wydarzenie})
+    };
     setForm(newImage)
   }
+  let formForm = new FormData()
+  for(let i = 1; i < form.length; i++){
+    console.log(form[i].image)
+    formForm.append('image', form[i].image)
+    formForm.append('wydarzenie', props.wydarzenie)
+  }
+  
 
   // 
-  let formForm = new FormData();
-  formForm.append('image', form.image)
-  formForm.append('wydarzenie', form.wydarzenie)
+  //let formForm = new FormData();
+  //formForm.append('image', form.image)
+  //formForm.append('wydarzenie', form.wydarzenie)
 
 
   //Submit and create image in galery
