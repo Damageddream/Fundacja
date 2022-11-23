@@ -5,15 +5,16 @@ from .models import Aktualnosci, User, Photos, DownloadFile
 
 class AktualnosciSerializer(serializers.ModelSerializer):
 
-    username = serializers.SerializerMethodField('get_username')
+    #username = serializers.SerializerMethodField('get_username')
 
     class Meta:
         model = Aktualnosci
-        fields = ('id', 'poster', 'title', 'title_image', 'content','content_preview', 'date', 'archived', 'username')
-
+        fields = ('id', 'poster', 'title', 'title_image', 'content','content_preview', 'date', 'archived',)
+""" 
+    fields = ('id', 'poster', 'title', 'title_image', 'content','content_preview', 'date', 'archived', 'username')
     def get_username(self, name):
         username = name.poster.username
-        return username
+        return username """
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

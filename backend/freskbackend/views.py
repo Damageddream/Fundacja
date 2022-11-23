@@ -12,6 +12,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 
 class AktualnosciView(viewsets.ModelViewSet):
     serializer_class = AktualnosciSerializer
+    parser_classes = (MultiPartParser, FormParser)
     queryset = Aktualnosci.objects.all()
 
 class PhotosView(viewsets.ModelViewSet):
