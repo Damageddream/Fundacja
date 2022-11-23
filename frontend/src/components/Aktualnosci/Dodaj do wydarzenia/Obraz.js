@@ -35,14 +35,6 @@ function Obraz(props) {
     formForm.append('wydarzenie', props.wydarzenie)
   }
   
-
-  // 
-  //let formForm = new FormData();
-  //formForm.append('image', form.image)
-  //formForm.append('wydarzenie', form.wydarzenie)
-
-
-  //Submit and create image in galery
   const handleSubmit = (event) => {
     setIsLoading(true);
     event.preventDefault()
@@ -77,7 +69,6 @@ function Obraz(props) {
                 <Form.Label>Dodaj zdjęcia do galerii</Form.Label>
                 <Form.Control 
                 type="file" 
-                multiple 
                 accept="image/jpeg,image/png,image/gif"
                 name='image'
                 onChange={(e) => {handleImageChange(e)}}

@@ -58,7 +58,7 @@ const WydarzenieOsobno = () => {
   return (
     <Row>
       <UsunWydarzenie wydarzenie={locationId} />
-      <Plik />
+      <Plik wydarzenie={locationId}/>
       <Obraz wydarzenie={locationId} />
       <Col className='d-flex flex-column align-items-center'>
         <Row>

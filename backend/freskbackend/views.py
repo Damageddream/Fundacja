@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from rest_framework.decorators import action
 from rest_framework import viewsets
 from .serializers import AktualnosciSerializer, UserSerializer, PhotosSerializer, DownloadFileSerializer
 from .models import User, Aktualnosci, Photos, DownloadFile
@@ -23,7 +24,11 @@ class PhotosView(viewsets.ModelViewSet):
 
 class DownloadFileView(viewsets.ModelViewSet):
     serializer_class = DownloadFileSerializer
+    parser_classes = (MultiPartParser, FormParser)
     queryset = DownloadFile.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save()
 
 class UserView(viewsets.ModelViewSet):
     serializer_class = UserSerializer

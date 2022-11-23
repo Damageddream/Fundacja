@@ -12,30 +12,31 @@ function Plik(props) {
 
   // state for Form - form - storing form data, and isLoading - display when data is loading, error - handling errors
   const [form, setForm] = useState({
-    image: '',
+    file: '',
     wydarzenie: props.wydarzenie
   })
   const [errors, setErrors] = useState()
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleImageChange = (e) => {
-    let newImage = {...form};
-    newImage['image'] = e.target.files[0];
-    setForm(newImage)
+  const handleFileChange = (e) => {
+    let newFile= {...form};
+    newFile['file'] = e.target.files[0];
+    setForm(newFile)
+    console.log(form,newFile, props.wydarzenie)
   }
 
   // 
   let formForm = new FormData();
-  formForm.append('image', form.image)
+  formForm.append('file', form.file)
   formForm.append('wydarzenie', form.wydarzenie)
 
-  //Submit and create image in galery
+  //Submit and add file to download
   const handleSubmit = (event) => {
     setIsLoading(true);
     event.preventDefault()
       axios({
         method: "POST",
-        url: "/api/photos/",
+        url: "/api/files/",
         data: formForm,
         headers: {
             "Content-Type": "multipart/form-data",
@@ -62,10 +63,8 @@ function Plik(props) {
                 <Form.Label>Dodaj zdjęcia do galerii</Form.Label>
                 <Form.Control 
                 type="file" 
-                multiple 
-                accept="image/jpeg,image/png,image/gif"
-                name='image'
-                onChange={(e) => {handleImageChange(e)}}
+                name='file'
+                onChange={(e) => {handleFileChange(e)}}
                 isInvalid={!!errors}/>
                 <Form.Control.Feedback type='invalid'>
                     {errors}

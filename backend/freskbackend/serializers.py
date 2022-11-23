@@ -21,11 +21,6 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('__all__')
 
 class PhotosSerializer(serializers.ModelSerializer):
-
-    def __init__(self,*args,**kwargs):
-        many = kwargs.pop('many', True)
-        super(PhotosSerializer, self).__init__(many=many, *args, **kwargs)
-
     class Meta:
         model = Photos
         fields = ('__all__')

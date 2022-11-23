@@ -7,10 +7,44 @@ import '../Utilities/RichText.css'
 
 
 const DodajWydarzenie = () => {
-  const [show, setShow] = useState(false);
 
+  //state for showing - hidding modal
+  const [show, setShow] = useState(false);
+  //functions for showing - hidding modal
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  //state for storing data from form before submit 'on change'
+  const [form, setForm] = useState({
+    poster:'',
+    title:'',
+    title_image:'',
+    content:'',
+    content_preview:'',
+    date:'',
+    archived:'',
+  })
+
+  
+
+  //catching data from onchange - title and updating form
+  const handleTitleChange = (e) => {
+    setForm({
+      ...form,
+      title: e.target.value
+    })
+  }
+  //catching data from onchange - title_image and updating form
+  const handleTitle_imageChange = (e) => {
+    setForm({
+      ...form,
+      title_image: e.target.value
+    })
+  }
+  //catching data from onchange - content and updating form
+  //catching data from onchange - content_preview and updating form
+  //catching data from onchange - date and updating form
+  //catching data from onchange - archived and updating form
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
@@ -27,7 +61,7 @@ const DodajWydarzenie = () => {
           <Modal.Title>Dodaj Wydarzenie</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form id='addwydarzenie'>
+          <Form id='addwydarzenie'>
             <Form.Group className="mb-3">
               <Form.Label>Tytuł</Form.Label>
               <Form.Control type="text" placeholder="Wprowadź tytuł..." />
@@ -48,7 +82,7 @@ const DodajWydarzenie = () => {
               <Form.Label>Napisz tekst wydarzenia</Form.Label>
               <RichText />
             </Form.Group>
-          </form>
+          </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" type='submit' form='addwydarzenie'>
