@@ -77,7 +77,7 @@ const WydarzenieOsobno = () => {
           />
         </Row>
         <Row>
-          <div dangerouslySetInnerHTML={{ __html: aktualnosci.content }} />
+          {aktualnosci.content}
         </Row>
       </Col>
     </Row>

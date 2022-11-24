@@ -4,6 +4,8 @@ import Col from "react-bootstrap/Col";
 import axios from "axios";
 import Wydarzenie from "./Wydarzenie";
 import Paginat from "./Pagination";
+import { Editor, EditorState, convertFromRaw } from "draft-js";
+import { stateToHTML } from "draft-js-export-html";
 
 function ListaAktualnosci() {
   // getting all of aktualnosci from backend
@@ -12,6 +14,9 @@ function ListaAktualnosci() {
   const [isLoading, setIsLoading] = useState(false);
   // setting for instance of error
   const [error, setError] = useState();
+
+  //setting state for rich text data
+  const [richText, setRichText] = useState();
 
   //pagination states
   const [currentPage, setCurrentPage] = useState(1);
@@ -42,9 +47,16 @@ function ListaAktualnosci() {
         }
       });
     setIsLoading(false);
-    console.log(aktualnosci)
+    console.log(aktualnosci);
   }
-
+  // getting data from draft js, and changing it to html ready data
+  function getRichText(text) {
+    console.log(convertFromRaw(text))
+    setRichText(convertFromRaw(text));
+    const editorState = EditorState.createWithContent(richText)
+    console.log(editorState)
+      
+  }
 
   // pagination variables
   const indexOfLastPost = currentPage * postsPerPage;
@@ -77,7 +89,7 @@ function ListaAktualnosci() {
                 id={wydarzenie.id}
                 title={wydarzenie.title}
                 title_image={wydarzenie.title_image}
-                content={wydarzenie.content}
+                content={getRichText(wydarzenie.content)}
                 contentPreview={wydarzenie.content_preview}
                 date={wydarzenie.date}
                 username={wydarzenie.username}
