@@ -1,4 +1,4 @@
-import { Editor, EditorState, getDefaultKeyBinding, RichUtils} from 'draft-js';
+import { Editor, EditorState, getDefaultKeyBinding, RichUtils, convertToRaw} from 'draft-js';
 import React from 'react';
 
 
@@ -10,7 +10,7 @@ class RichText extends React.Component {
       this.focus = () => this.refs.editor.focus();
       this.onChange = (editorState) => {
         this.setState({editorState})
-        props.getData(this.state)
+        props.getData(JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())))
       }
 
 

@@ -30,5 +30,4 @@ router.register(r'files', views.DownloadFileView, 'file')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('add_wydarzenie/', views.add_wydarzenie, name='add_wydarzenie'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

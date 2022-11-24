@@ -5,7 +5,6 @@ import Form from "react-bootstrap/Form";
 import RichText from "../Utilities/RichText";
 import "../Utilities/RichText.css";
 import axios from "axios";
-import { EditorState, Editor, convertToRaw } from 'draft-js';
 
 const DodajWydarzenie = () => {
   //state for showing - hidding modal
@@ -24,9 +23,12 @@ const DodajWydarzenie = () => {
     poster: "fresk",
     title: "",
     title_image: "",
-    content: "",
     content_preview: "",
   });
+  //state for storing data from rich editor
+  const [editorData, setEditorData] = useState({
+    content: ''
+  })
 
   //catching data from onchange - title and updating form
   const handleTitleChange = (e) => {
@@ -34,6 +36,7 @@ const DodajWydarzenie = () => {
       ...form,
       title: e.target.value,
     });
+    console.log(form)
   };
   //catching data from onchange - title_image and updating form
   const handleTitle_imageChange = (e) => {
@@ -44,9 +47,9 @@ const DodajWydarzenie = () => {
   };
   //catching data from onchange - content and updating form
   const handleContentChange = (e) => {
-
-    console.log(e)
-    
+    setEditorData({
+      content: e,
+    });
   };
   //catching data from onchange - content_preview and updating form
   const handleContent_previewChange = (e) => {
@@ -62,7 +65,7 @@ const DodajWydarzenie = () => {
   
   formForm.append('title', form.title)
   formForm.append('title_image', form.title_image)
-  formForm.append('content', form.content)
+  formForm.append('content', editorData.content)
   formForm.append('content_preview', form.content_preview)
 
   // function for posting all data from form into backend

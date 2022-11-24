@@ -27,7 +27,6 @@ function Obraz(props) {
       'wydarzenie':props.wydarzenie})
     };
     setForm(newImage)
-    console.log(form)
   }
   let formForm = new FormData()
   for(let i = 1; i < form.length; i++){
