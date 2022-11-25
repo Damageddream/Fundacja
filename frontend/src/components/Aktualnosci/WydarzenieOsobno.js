@@ -1,4 +1,4 @@
-import { useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Moment from "moment";
@@ -7,16 +7,20 @@ import Col from "react-bootstrap/Col";
 import Plik from "./Dodaj do wydarzenia/Plik";
 import Obraz from "./Dodaj do wydarzenia/Obraz";
 import UsunWydarzenie from "./Dodaj do wydarzenia/UsunWydarzenie";
+import draftToHtml from 'draftjs-to-html';
 
 const WydarzenieOsobno = () => {
 
-  
+
   let navigate = useNavigate();
 
   const location = useLocation()
   const [aktualnosci, setNewAktualnosci] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
+
+    //setting text editor into html
+    const content = { __html: draftToHtml(aktualnosci.content) };
 
 
   useEffect(() => {
@@ -29,10 +33,10 @@ const WydarzenieOsobno = () => {
       method: 'DELETE',
       url: `/api/aktualnoscis/${location.state}/`,
     })
-    .then(() => {
-      navigate('/aktualnosci')
+      .then(() => {
+        navigate('/aktualnosci')
 
-    })
+      })
   }
 
   function getAktulanosci() {
@@ -58,7 +62,7 @@ const WydarzenieOsobno = () => {
   return (
     <Row>
       <UsunWydarzenie wydarzenie={locationId} />
-      <Plik wydarzenie={locationId}/>
+      <Plik wydarzenie={locationId} />
       <Obraz wydarzenie={locationId} />
       <Col className='d-flex flex-column align-items-center'>
         <Row>
@@ -66,10 +70,10 @@ const WydarzenieOsobno = () => {
 
         </Row>
         <Row>
-        <h1>{aktualnosci.title}</h1>
+          <h1>{aktualnosci.title}</h1>
         </Row>
         <Row>
-          
+
           <img
             className="newsPhoto"
             src={aktualnosci.title_image}
@@ -77,7 +81,8 @@ const WydarzenieOsobno = () => {
           />
         </Row>
         <Row>
-          {aktualnosci.content}
+          <div dangerouslySetInnerHTML={content}>
+          </div>
         </Row>
       </Col>
     </Row>

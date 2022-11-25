@@ -2,4 +2,4 @@ react, react-router-dom
 django, django-rest-framework, 
 boostrap, mdb-react-ui-kit,
 Django: corsheaders, pillow
-JS: moment, axios, draft.js
+JS: moment, axios, draft.js, draftjs-to-html

@@ -9,8 +9,6 @@ function Wydarzenie(props) {
   //cleaning up data formating
   const formatDate = Moment(props.date).format("DD.MM.YYYY");
 
-  //exchanging string from datababse text editor into html
-  const content = { __html: props.contentPreview };
 
   return (
     <div className="my-5">
@@ -30,7 +28,7 @@ function Wydarzenie(props) {
                 Dodane: {formatDate} przez: {props.username} 
               </Card.Subtitle>
               <Card.Text>
-                <div dangerouslySetInnerHTML={content} />
+                {props.content_preview}
               </Card.Text>
               <Link to={`/aktualnosci/${props.id}`} state={props.id} className="btn btn-primary mt-auto">
                 Zobacz więcej
