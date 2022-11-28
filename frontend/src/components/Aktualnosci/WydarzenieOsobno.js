@@ -7,36 +7,32 @@ import Col from "react-bootstrap/Col";
 import Plik from "./Dodaj do wydarzenia/Plik";
 import Obraz from "./Dodaj do wydarzenia/Obraz";
 import UsunWydarzenie from "./Dodaj do wydarzenia/UsunWydarzenie";
-import draftToHtml from 'draftjs-to-html';
+import EdytujWydarzenie from "./Dodaj do wydarzenia/EdytujWydarzenie";
+import draftToHtml from "draftjs-to-html";
 
 const WydarzenieOsobno = () => {
-
-
   let navigate = useNavigate();
 
-  const location = useLocation()
+  const location = useLocation();
   const [aktualnosci, setNewAktualnosci] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
 
-    //setting text editor into html
-    const content = { __html: draftToHtml(aktualnosci.content) };
-
+  //setting text editor into html
+  const content = { __html: draftToHtml(aktualnosci.content) };
 
   useEffect(() => {
     getAktulanosci();
   }, []);
 
-  let locationId = location.pathname.slice(-1)
+  let locationId = location.pathname.slice(-1);
   function deleteAktualnosci() {
     axios({
-      method: 'DELETE',
+      method: "DELETE",
       url: `/api/aktualnoscis/${location.state}/`,
-    })
-      .then(() => {
-        navigate('/aktualnosci')
-
-      })
+    }).then(() => {
+      navigate("/aktualnosci");
+    });
   }
 
   function getAktulanosci() {
@@ -48,7 +44,6 @@ const WydarzenieOsobno = () => {
       .then((response) => {
         const data = response.data;
         setNewAktualnosci(data);
-
       })
       .catch((error) => {
         if (error.response) {
@@ -64,16 +59,19 @@ const WydarzenieOsobno = () => {
       <UsunWydarzenie wydarzenie={locationId} />
       <Plik wydarzenie={locationId} />
       <Obraz wydarzenie={locationId} />
-      <Col className='d-flex flex-column align-items-center'>
-        <Row>
-          {Moment(aktualnosci.date).format("DD.MM.YYYY")}
-
-        </Row>
+      <EdytujWydarzenie
+        wydarzenie={locationId}
+        title={aktualnosci.title}
+        title_image={aktualnosci.title_image}
+        content_preview={aktualnosci.content_preview}
+        content={aktualnosci.content}
+      />
+      <Col className="d-flex flex-column align-items-center">
+        <Row>{Moment(aktualnosci.date).format("DD.MM.YYYY")}</Row>
         <Row>
           <h1>{aktualnosci.title}</h1>
         </Row>
         <Row>
-
           <img
             className="newsPhoto"
             src={aktualnosci.title_image}
@@ -81,12 +79,11 @@ const WydarzenieOsobno = () => {
           />
         </Row>
         <Row>
-          <div dangerouslySetInnerHTML={content}>
-          </div>
+          <div dangerouslySetInnerHTML={content}></div>
         </Row>
       </Col>
     </Row>
-  )
-}
+  );
+};
 
-export default WydarzenieOsobno
+export default WydarzenieOsobno;

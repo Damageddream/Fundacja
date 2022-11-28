@@ -28,7 +28,7 @@ function Wydarzenie(props) {
                 Dodane: {formatDate} przez: {props.username} 
               </Card.Subtitle>
               <Card.Text>
-                {props.content_preview}
+                {props.contentPreview}
               </Card.Text>
               <Link to={`/aktualnosci/${props.id}`} state={props.id} className="btn btn-primary mt-auto">
                 Zobacz więcej
