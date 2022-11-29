@@ -19,6 +19,10 @@ from rest_framework import routers
 from freskbackend import views
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 router = routers.DefaultRouter()
 router.register(r'aktualnoscis', views.AktualnosciView, 'aktualnosci')
@@ -27,7 +31,11 @@ router.register(r'photos', views.PhotosView, 'photo')
 router.register(r'files', views.DownloadFileView, 'file')
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/register/', views.RegisterView.as_view(), name='sign_up'),
+    path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
