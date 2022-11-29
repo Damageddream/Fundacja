@@ -12,7 +12,6 @@ class RichText extends React.Component {
   constructor(props) {
     super(props);
     if (props.editorState) {
-      console.log(convertFromRaw(props.editorState));
       this.state = { editorState: EditorState.createWithContent(convertFromRaw(props.editorState))}
     } else {
       this.state = { editorState: EditorState.createEmpty() };

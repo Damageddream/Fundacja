@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'freskbackend',
     'corsheaders',
     'rest_framework',
-    'ckeditor'
+    'rest_framework_simplejwt'
 ]
 
 MIDDLEWARE = [
@@ -136,3 +136,16 @@ CORS_ORIGIN_WHITELIST = [
 ]
 
 AUTH_USER_MODEL = 'freskbackend.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication', 
+        'rest_framework.authentication.TokenAuthentication'
+    ),
+}
