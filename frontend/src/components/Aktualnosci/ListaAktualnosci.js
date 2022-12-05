@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import axios from "axios";
 import Wydarzenie from "./Wydarzenie";
 import Paginat from "./Pagination";
-import draftToHtml from 'draftjs-to-html';
+
 
 function ListaAktualnosci() {
   // getting all of aktualnosci from backend

@@ -13,6 +13,8 @@ import WydarzenieOsobno from "./components/Aktualnosci/WydarzenieOsobno";
 import Projekty from "./components/Co Robimy/Projekty";
 import Dotacje from "./components/Co Robimy/Dotacje";
 import Uslugi from "./components/Co Robimy/Uslugi";
+import Register from "./components/Pracownicy/Register.js";
+import Login from "./components/Pracownicy/Login";
 
 
 function App() {
@@ -32,8 +34,9 @@ function App() {
           <Route index element={<Aktualnosci />} />
           <Route path="/aktualnosci/:id" element={<WydarzenieOsobno />} />
         </Route>
-
         <Route path="/kontakt" element={<Kontakt />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Container fluid>
         <Footer />
