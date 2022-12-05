@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import axios from "axios";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import axiosInstance from "./AxiosInstance";
+import { useNavigate} from "react-router-dom";
 
 const Login = () => {
+
+    let navigate = useNavigate();
 
     //states for loading when fetching data and catching errors from fetching
     const [errors, setErrors] = useState();
@@ -44,25 +47,23 @@ const Login = () => {
         setIsLoading(true);
         e.preventDefault()
 
-        axios({
-            method: 'POST',
-            url: '/api/login/',
-            data: formForm,
-            headers: {
-                Authorization: localStorage.getItem('acces_token')
-                    ? 'JWT ' + localStorage.getItem('acces_token') : null,
-                'Content-Type': 'application/json',
-                accept: 'application/json',
-            },
+        axiosInstance.post(
+            'login/', {
+                username: form.username,
+                password: form.password,
+            }
 
-        }).then((res) => {
-            localStorage.setItem('acces_token', res.data.access);
-            localStorage.setItem('refresh_token', res.data.refresh)
-
+        )
+        .then((res) => {
+            localStorage.setItem('access_token', res.data.access);
+            localStorage.setItem('refresh_token', res.data.refresh);
+            axiosInstance.defaults.headers['Authorization'] = 
+            'JWT ' + localStorage.getItem('access_token');
+            navigate('/aktualnosci');
         })
         .catch((error) => {
             setErrors(error)
-        })  
+        })
         setIsLoading(false);
     }
 

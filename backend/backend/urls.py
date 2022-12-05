@@ -38,4 +38,5 @@ urlpatterns = [
     path('api/register/', views.RegisterView.as_view(), name='sign_up'),
     path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/logout/blacklist/', views.BlacklistTokenUpdateView.as_view(), name='blacklist')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

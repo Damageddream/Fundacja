@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import axios from "axios";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import axiosInstance from "./AxiosInstance";
+import { useNavigate} from "react-router-dom";
+
 
 const Register = () => {
+
+    //redirecting after registering
+    let navigate = useNavigate();
 
     //states for loading when fetching data and catching errors from fetching
     const [errors, setErrors] = useState();
@@ -40,66 +45,61 @@ const Register = () => {
         })
     }
 
-    //passing data from form into FormData to handle registtering
-    let formForm = new FormData()
-
-    formForm.append('password', form.password)
-    formForm.append('username', form.username)
-    formForm.append('email', form.email)
 
 
     const handleSubmit = (e) => {
         setIsLoading(true);
         e.preventDefault()
 
-        axios({
-            method: 'POST',
-            url: '/api/register/',
-            data: formForm,
-            headers: {
-                Authorization: localStorage.getItem('acces_token')
-                    ? 'JWT ' + localStorage.getItem('acces_token') : null,
-                'Content-Type': 'application/json',
-                accept: 'application/json',
-            },
+        axiosInstance.post(
+            'register/', {
+                email: form.email,
+                username: form.username,
+                password: form.password,
+            }
 
-        }).catch((error) => {
+        )
+        .then(() => {
+            navigate('/aktualnosci')
+        })
+        .catch((error) => {
             setErrors(error)
         })
         setIsLoading(false);
     }
 
 
+
     return (
         <>
             <Row className="justify-content-md-center">
                 <Col  lg="4" md='6' xs='8'>
-                    <Form>
+            <Form>
                         <Form.Group className="mb-3 mt-3">
-                            <Form.Label>Nazwa uzytkownika</Form.Label>
-                            <Form.Control type="text" placeholder="Nazwa uzytkownika" onChange={(e) => {
-                                handleUsername(e);
-                            }} />
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" placeholder="Podaj email" onChange={(e) => {
-                                handleEmail(e);
-                            }} />
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                            <Form.Label>Hasło</Form.Label>
-                            <Form.Control type="password" placeholder="Hasło" onChange={(e) => {
-                                handlePassword(e);
-                            }} />
-                        </Form.Group>
+                    <Form.Label>Nazwa uzytkownika</Form.Label>
+                    <Form.Control type="text" placeholder="Nazwa uzytkownika" onChange={(e) => {
+                        handleUsername(e);
+                    }} />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control type="email" placeholder="Podaj email" onChange={(e) => {
+                        handleEmail(e);
+                    }} />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Hasło</Form.Label>
+                    <Form.Control type="password" placeholder="Hasło" onChange={(e) => {
+                        handlePassword(e);
+                    }} />
+                </Form.Group>
                         <Button className="me-3" variant="primary" type="submit" onClick={handleSubmit}>
-                            Zarejestruj się
-                        </Button>
-                        <Button variant="secondary">
-                            Wróć
-                        </Button>
-                    </Form>
+                    Zarejestruj się
+                </Button>
+                <Button variant="secondary">
+                    Wróć
+                </Button>
+            </Form>
                 </Col>
             </Row>
         </>

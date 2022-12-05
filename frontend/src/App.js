@@ -15,6 +15,7 @@ import Dotacje from "./components/Co Robimy/Dotacje";
 import Uslugi from "./components/Co Robimy/Uslugi";
 import Register from "./components/Pracownicy/Register.js";
 import Login from "./components/Pracownicy/Login";
+import Logout from "./components/Pracownicy/Logout";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/kontakt" element={<Kontakt />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
       <Container fluid>
         <Footer />
