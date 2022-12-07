@@ -6,13 +6,17 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import { BrowserRouter } from "react-router-dom";
+import { AuthContexProvider } from "./components/Utilities/Context";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <AuthContexProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </AuthContexProvider>
   </React.StrictMode>
 );
 

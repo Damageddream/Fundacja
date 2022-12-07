@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axiosInstance from "./AxiosInstance";
 import { useNavigate} from "react-router-dom";
+import AuthContext from "../Utilities/Context";
+
 
 const Login = () => {
 
+    //hook for setting context that user is logged in
+    const authCtx = useContext(AuthContext);
+
+    //hook for redirecitng after login
     let navigate = useNavigate();
 
     //states for loading when fetching data and catching errors from fetching
@@ -55,11 +61,11 @@ const Login = () => {
 
         )
         .then((res) => {
-            console.log(res.data.user)
             localStorage.setItem('access_token', res.data.access);
             localStorage.setItem('refresh_token', res.data.refresh);
             axiosInstance.defaults.headers['Authorization'] = 
             'JWT ' + localStorage.getItem('access_token');
+            authCtx.login(localStorage.getItem('access_token'))
             navigate('/aktualnosci');
         })
         .catch((error) => {

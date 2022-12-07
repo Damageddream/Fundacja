@@ -6,8 +6,14 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import "../sass/components/navbar.css";
 import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import AuthContext from './Utilities/Context';
 
 function Navbar2() {
+
+    //context for for checking if user is logged in
+    const authCtx = useContext(AuthContext); 
+    const isLoggedIn = authCtx.isLoggedIn;
 
 
     return (
@@ -28,6 +34,11 @@ function Navbar2() {
                         <NavLink to='/ofundacji' className='nav-linky'>O Fundacji</NavLink>
                         <NavLink to='/corobimy' className='nav-linky'>Co robimy</NavLink>
                         <NavLink to='/kontakt' className='nav-linky'>Kontakt</NavLink>
+                        {isLoggedIn && (<NavLink to='/logout' className='nav-linky ms-5'>Wyloguj</NavLink>
+                        )}
+                        {isLoggedIn && (<NavLink to='/aktualnosci' className='nav-linky'>Profil</NavLink>
+                        )}
+
 
                     </Nav>
                     <Form className="d-flex">
