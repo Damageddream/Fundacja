@@ -5,11 +5,15 @@ import logo from "../images/fresk-logo-beznapi.png";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import "../sass/components/navbar.css";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import AuthContext from './Utilities/Context';
 
 function Navbar2() {
+
+    
+    //hook for redirecitng after search and passing search data
+    let navigate = useNavigate();
 
     //context for for checking if user is logged in
     const authCtx = useContext(AuthContext); 
@@ -18,12 +22,12 @@ function Navbar2() {
     //adding data from search into state and handle searching
     const [search, setSearch] = useState('');
     const handleSearchChange = (e) => {
-        setSearch(e)
+        setSearch(e.target.value)
     }
 
     const handleSearch = (e) => {
         e.preventDefault()
-        
+        navigate('/search', {state: {src : search}})
     }
 
     return (
@@ -61,7 +65,7 @@ function Navbar2() {
                                 handleSearchChange(e)
                             }}
                         />
-                        <Button oncClick={handleSearch} type='submit' variant="primary">Szukaj</Button>
+                        <Button onClick={handleSearch} type='submit' variant="primary">Szukaj</Button>
                     </Form>
                 </Navbar.Collapse>
             </Container>

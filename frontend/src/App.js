@@ -16,6 +16,7 @@ import Uslugi from "./components/Co Robimy/Uslugi";
 import Register from "./components/Pracownicy/Register.js";
 import Login from "./components/Pracownicy/Login";
 import Logout from "./components/Pracownicy/Logout";
+import WyszukaneAktualnosci from "./components/Aktualnosci/WyszukaneAktualnosci";
 
 
 function App() {
@@ -39,6 +40,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/search" element={<WyszukaneAktualnosci />} />
+
       </Routes>
       <Container fluid>
         <Footer />
