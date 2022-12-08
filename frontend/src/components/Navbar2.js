@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import "../sass/components/navbar.css";
 import { NavLink } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import AuthContext from './Utilities/Context';
 
 function Navbar2() {
@@ -15,6 +15,16 @@ function Navbar2() {
     const authCtx = useContext(AuthContext); 
     const isLoggedIn = authCtx.isLoggedIn;
 
+    //adding data from search into state and handle searching
+    const [search, setSearch] = useState('');
+    const handleSearchChange = (e) => {
+        setSearch(e)
+    }
+
+    const handleSearch = (e) => {
+        e.preventDefault()
+        
+    }
 
     return (
         <Navbar collapseOnSelect expand="lg" bg="white">
@@ -44,11 +54,14 @@ function Navbar2() {
                     <Form className="d-flex">
                         <Form.Control
                             type="search"
-                            placeholder="Search"
+                            placeholder="Szukaj"
                             className="me-2"
-                            aria-label="Search"
+                            aria-label="Szukaj"
+                            onChange={(e)=>{
+                                handleSearchChange(e)
+                            }}
                         />
-                        <Button variant="outline-success">Search</Button>
+                        <Button oncClick={handleSearch} type='submit' variant="primary">Szukaj</Button>
                     </Form>
                 </Navbar.Collapse>
             </Container>

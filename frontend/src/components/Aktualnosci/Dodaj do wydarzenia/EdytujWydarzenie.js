@@ -5,8 +5,14 @@ import Form from "react-bootstrap/Form";
 import RichText from "../../Utilities/RichText";
 import "../../Utilities/RichText.css";
 import axios from "axios";
+import { useNavigate} from "react-router-dom";
 
 const EdytujWydarzenie = (props) => {
+
+  
+  //hook for redirecitng after login
+  let navigate = useNavigate();
+
   //state for showing - hidding modal
   const [show, setShow] = useState(false);
   //functions for showing - hidding modal
@@ -22,7 +28,7 @@ const EdytujWydarzenie = (props) => {
   const [form, setForm] = useState({
     poster: "fresk",
     title: "",
-    title_image: "",
+    title_image: null,
     content_preview: "",
   });
   //state for storing data from rich editor
@@ -57,14 +63,18 @@ const EdytujWydarzenie = (props) => {
       ...form,
       content_preview: e.target.value,
     });
-    
+
   };
 
   //passing data from form into FormData to handle image formatting
   let formForm = new FormData()
-  
+
   formForm.append('title', form.title)
-  formForm.append('title_image', form.title_image)
+  
+  //check if new image is added if not, left blank
+  if (form.title_image) {
+    formForm.append('title_image', form.title_image)
+  }
   formForm.append('content', editorData.content)
   formForm.append('content_preview', form.content_preview)
 
@@ -74,15 +84,18 @@ const EdytujWydarzenie = (props) => {
     e.preventDefault()
 
     axios({
-      method: 'POST',
-      url: '/api/aktualnoscis/',
+      method: 'PATCH',
+      url: `/api/aktualnoscis/${props.wydarzenie}/`,
       data: formForm,
       headers: {
         "Content-Type": "multipart/form-data"
       }
-    }).catch((error) => {
+    
+    })
+    .catch((error) => {
       setErrors(error)
     })
+    .then(navigate('/aktualnosci'))
 
     setIsLoading(false);
   }
