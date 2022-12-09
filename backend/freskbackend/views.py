@@ -1,11 +1,8 @@
-from django.shortcuts import render, get_object_or_404
-from rest_framework.decorators import action
 from rest_framework import viewsets
-from .serializers import AktualnosciSerializer, UserSerializer, PhotosSerializer, DownloadFileSerializer
-from .models import User, Aktualnosci, Photos, DownloadFile
+from .serializers import AktualnosciSerializer, UserSerializer, PhotosSerializer, DownloadFileSerializer, ContactFormSerializer
+from .models import User, Aktualnosci, Photos, DownloadFile, ContactForm
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.request import Request
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -38,6 +35,13 @@ class UserView(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
+class ContactView(viewsets.ModelViewSet):
+    serializer_class = ContactFormSerializer
+    queryset = ContactForm.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save()
+
 
 
 class RegisterView(APIView):
@@ -59,3 +63,4 @@ class BlacklistTokenUpdateView(APIView):
             return Response(status=status.HTTP_205_RESET_CONTENT)
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+    

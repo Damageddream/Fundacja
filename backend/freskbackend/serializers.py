@@ -1,20 +1,13 @@
 from rest_framework import serializers
-from .models import Aktualnosci, User, Photos, DownloadFile
+from .models import Aktualnosci, User, Photos, DownloadFile, ContactForm
 
 
 
 class AktualnosciSerializer(serializers.ModelSerializer):
 
-    #username = serializers.SerializerMethodField('get_username')
-
     class Meta:
         model = Aktualnosci
         fields = ('id', 'poster', 'title', 'title_image', 'content','content_preview', 'date', 'archived',)
-""" 
-    fields = ('id', 'poster', 'title', 'title_image', 'content','content_preview', 'date', 'archived', 'username')
-    def get_username(self, name):
-        username = name.poster.username
-        return username """
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -36,4 +29,9 @@ class PhotosSerializer(serializers.ModelSerializer):
 class DownloadFileSerializer(serializers.ModelSerializer):
     class Meta:
         model = DownloadFile
+        fields = ('__all__')
+
+class ContactFormSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactForm
         fields = ('__all__')

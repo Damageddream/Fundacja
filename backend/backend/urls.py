@@ -29,6 +29,7 @@ router.register(r'aktualnoscis', views.AktualnosciView, 'aktualnosci')
 router.register(r'users', views.UserView, 'user')
 router.register(r'photos', views.PhotosView, 'photo')
 router.register(r'files', views.DownloadFileView, 'file')
+router.register(r'contact', views.ContactView, 'contact_form')
 
 
 

@@ -8,6 +8,7 @@ import Plik from "./Dodaj do wydarzenia/Plik";
 import Obraz from "./Dodaj do wydarzenia/Obraz";
 import UsunWydarzenie from "./Dodaj do wydarzenia/UsunWydarzenie";
 import EdytujWydarzenie from "./Dodaj do wydarzenia/EdytujWydarzenie";
+import DownloadFile from "./Dodaj do wydarzenia/DownloadFile";
 import draftToHtml from "draftjs-to-html";
 
 const WydarzenieOsobno = () => {
@@ -59,6 +60,7 @@ const WydarzenieOsobno = () => {
       <UsunWydarzenie wydarzenie={locationId} />
       <Plik wydarzenie={locationId} />
       <Obraz wydarzenie={locationId} />
+      <DownloadFile wydarzenie={locationId} />
       <EdytujWydarzenie
         wydarzenie={locationId}
         title={aktualnosci.title}
@@ -80,6 +82,10 @@ const WydarzenieOsobno = () => {
         </Row>
         <Row>
           <div dangerouslySetInnerHTML={content}></div>
+        </Row>
+        <Row>
+          <DownloadFile wydarzenie={locationId} />
+          <p>??</p>
         </Row>
       </Col>
     </Row>
