@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 
 
-const DeleteFile = (props) => {
+const DeleteImage = (props) => {
 
     // redirecting after delete
     let navigate = useNavigate();
@@ -19,7 +19,7 @@ const DeleteFile = (props) => {
         setIsLoading(true);
         axios({
             method: 'DELETE',
-            url: `/api/files/${props.file}/`,
+            url: `/api/photos/${props.image}/`,
         })
         setIsLoading(false);
     }
@@ -31,4 +31,4 @@ const DeleteFile = (props) => {
     )
 }
 
-export default DeleteFile;
+export default DeleteImage;

@@ -44,6 +44,7 @@ const DownloadFile = (props) => {
                 return (
                     <>
                         <a href={download.file}>link</a>
+                        <DeleteFile file={download.id}/>
 
                     </>
                 )

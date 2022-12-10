@@ -10,6 +10,7 @@ import UsunWydarzenie from "./Dodaj do wydarzenia/UsunWydarzenie";
 import EdytujWydarzenie from "./Dodaj do wydarzenia/EdytujWydarzenie";
 import DownloadFile from "./Dodaj do wydarzenia/DownloadFile";
 import draftToHtml from "draftjs-to-html";
+import Galeria from "./Dodaj do wydarzenia/Galeria";
 
 const WydarzenieOsobno = () => {
   let navigate = useNavigate();
@@ -61,6 +62,7 @@ const WydarzenieOsobno = () => {
       <Plik wydarzenie={locationId} />
       <Obraz wydarzenie={locationId} />
       <DownloadFile wydarzenie={locationId} />
+      <Galeria wydarzenie={locationId}/>
       <EdytujWydarzenie
         wydarzenie={locationId}
         title={aktualnosci.title}
