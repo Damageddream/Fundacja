@@ -18,9 +18,11 @@ const DeleteFile = (props) => {
         axios({
             method: 'DELETE',
             url: `/api/files/${props.file}/`,
-        })
-        props.getFiles()
-        setIsLoading(false);
+        }).then(() => {
+            props.getFiles()
+            setIsLoading(false)
+    })
+
     }
 
     return (

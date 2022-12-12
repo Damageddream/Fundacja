@@ -6,7 +6,7 @@ import DeleteFile from "./UsunPlik";
 const DownloadFile = (props) => {
 
     // states for storing files to download and loading state and errors
-    const [file, setFile] = useState(null)
+    const [file, setFile] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [errors, setErrors] = useState()
 
@@ -26,13 +26,17 @@ const DownloadFile = (props) => {
         }).then((response) => {
             const data = response.data;
             setFile(data);
-            file.map((download) => {
-                console.log(download.file)
-            })
+            console.log(file.length)
+
         })
             .catch((error) => {
                 setErrors(error);
             })
+    }
+
+    //rerender after deleting
+    const refreshedFiles = () => {
+
     }
 
 
