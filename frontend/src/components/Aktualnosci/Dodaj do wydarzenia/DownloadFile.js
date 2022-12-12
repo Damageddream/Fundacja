@@ -7,7 +7,7 @@ const DownloadFile = (props) => {
 
     // states for storing files to download and loading state and errors
     const [file, setFile] = useState(null)
-    const [isLoading, setIsLoading] = useState()
+    const [isLoading, setIsLoading] = useState(false)
     const [errors, setErrors] = useState()
 
 
@@ -29,7 +29,6 @@ const DownloadFile = (props) => {
             file.map((download) => {
                 console.log(download.file)
             })
-            console.log(data)
         })
             .catch((error) => {
                 setErrors(error);
@@ -43,8 +42,8 @@ const DownloadFile = (props) => {
             {file && file.map((download) => {
                 return (
                     <>
-                        <a href={download.file}>link</a>
-                        <DeleteFile file={download.id}/>
+                        <a href={download.file}>{download.file_name}</a>
+                        <DeleteFile  file={download.id} getFiles={getFiles}/>
 
                     </>
                 )

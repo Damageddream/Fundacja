@@ -55,7 +55,7 @@ function Obraz(props) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" className="mb-3" onClick={handleShow}>
         Dodaj zdjęcia
       </Button>
 

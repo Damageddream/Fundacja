@@ -50,7 +50,7 @@ function Navbar2() {
                         <NavLink to='/kontakt' className='nav-linky'>Kontakt</NavLink>
                         {isLoggedIn && (<NavLink to='/logout' className='nav-linky ms-5'>Wyloguj</NavLink>
                         )}
-                        {isLoggedIn && (<NavLink to='/aktualnosci' className='nav-linky'>Profil</NavLink>
+                        {isLoggedIn && (<NavLink to='/profile' className='nav-linky'>Profil</NavLink>
                         )}
 
 

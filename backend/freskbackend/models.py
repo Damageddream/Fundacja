@@ -28,6 +28,7 @@ class Photos(models.Model):
 class DownloadFile(models.Model):
     wydarzenie = models.ForeignKey(Aktualnosci, models.SET_NULL, null=True, related_name="wydarzenie_files")
     file = models.FileField(null=True, blank=True, upload_to="images/")
+    file_name = models.CharField(max_length=64, default='' )
     
 class ContactForm(models.Model):
     conForm = models.TextField(max_length=300)

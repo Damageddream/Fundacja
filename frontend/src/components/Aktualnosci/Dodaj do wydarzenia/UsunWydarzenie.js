@@ -37,7 +37,7 @@ function UsunWydarzenie(props) {
     };
     return (
         <>
-            <Button variant="danger" onClick={handleShow}>
+            <Button variant="danger" className="mb-3" onClick={handleShow}>
                 Usuń wydarzenie
             </Button>
             <Modal show={show} onHide={handleClose}>

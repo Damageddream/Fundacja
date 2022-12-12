@@ -26,7 +26,7 @@ const DeleteImage = (props) => {
 
     return(
         <>
-            <MDBIcon onClick={deleteHandler} fas icon="trash" />
+            <MDBIcon onClick={deleteHandler} style={{ cursor: 'pointer' }} fas icon="trash" />
         </>
     )
 }

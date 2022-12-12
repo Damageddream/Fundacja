@@ -102,7 +102,7 @@ const EdytujWydarzenie = (props) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" className="mb-3" onClick={handleShow}>
         Edytuj Wydarzenie
       </Button>
 

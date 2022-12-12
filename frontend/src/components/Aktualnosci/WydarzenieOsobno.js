@@ -58,20 +58,20 @@ const WydarzenieOsobno = () => {
   }
   return (
     <Row>
-      <UsunWydarzenie wydarzenie={locationId} />
-      <Plik wydarzenie={locationId} />
-      <Obraz wydarzenie={locationId} />
-      <DownloadFile wydarzenie={locationId} />
-      <Galeria wydarzenie={locationId}/>
-      <EdytujWydarzenie
-        wydarzenie={locationId}
-        title={aktualnosci.title}
-        title_image={aktualnosci.title_image}
-        content_preview={aktualnosci.content_preview}
-        content={aktualnosci.content}
-      />
+      <Col md='4' sm='4' lg='2' className=" ms-3 d-flex flex-column align-items-left justify-content-around">
+        <Plik wydarzenie={locationId} />
+        <Obraz wydarzenie={locationId} />
+        <EdytujWydarzenie
+          className="mb-2"
+          wydarzenie={locationId}
+          title={aktualnosci.title}
+          title_image={aktualnosci.title_image}
+          content_preview={aktualnosci.content_preview}
+          content={aktualnosci.content}
+        />
+        <UsunWydarzenie wydarzenie={locationId} />
+      </Col>
       <Col className="d-flex flex-column align-items-center">
-        <Row>{Moment(aktualnosci.date).format("DD.MM.YYYY")}</Row>
         <Row>
           <h1>{aktualnosci.title}</h1>
         </Row>
@@ -82,13 +82,16 @@ const WydarzenieOsobno = () => {
             alt={aktualnosci.title}
           />
         </Row>
+        <Row>Dodane:{Moment(aktualnosci.date).format("DD.MM.YYYY")}</Row>
         <Row>
           <div dangerouslySetInnerHTML={content}></div>
         </Row>
         <Row>
-          <DownloadFile wydarzenie={locationId} />
-          <p>??</p>
+          <Galeria wydarzenie={locationId} />
         </Row>
+      </Col>
+      <Col md='4' sm='4' lg='2' className=" ms-3 d-flex flex-column align-items-left justify-content-around">
+        <DownloadFile wydarzenie={locationId} />
       </Col>
     </Row>
   );

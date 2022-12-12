@@ -20,8 +20,10 @@ const Footer = () => {
               <p>NIP: 6572174750</p>
               <p>REGON: 383642931</p>
               <p>KRS: 0000790916</p>
+              <a href="/login" className="text-reset">
+                  Pracownicy
+                </a>
             </MDBCol>
-
             <MDBCol md="2" lg="2" xl="2" className="mx-auto mb-4 mt-5">
               <h6 className="text-uppercase fw-bold mb-4">Usługi</h6>
               <p>
