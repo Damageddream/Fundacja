@@ -62,17 +62,13 @@ const Ofundacji = () => {
   };
   return (
     <div>
-      <div
-        style={{
-          height: 300,
-        }}>
+      <div className='logoContainer'>
         <div
           id='freskPhoto'
           className="center bg-image"
           style={{
             backgroundImage:
               `url(${opis.photo})`,
-            height: 200,
           }}
         >
         </div>
