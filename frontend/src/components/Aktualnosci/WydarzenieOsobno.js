@@ -90,7 +90,7 @@ const WydarzenieOsobno = () => {
           <Galeria wydarzenie={locationId} />
         </Row>
       </Col>
-      <Col md='4' sm='4' lg='2' className=" ms-3 d-flex flex-column align-items-left justify-content-around">
+      <Col md='4' sm='4' lg='2' className=" ms-3 d-flex flex-column align-items-left justify-content-center">
         <DownloadFile wydarzenie={locationId} />
       </Col>
     </Row>

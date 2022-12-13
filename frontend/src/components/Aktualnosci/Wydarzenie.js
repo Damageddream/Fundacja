@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import "../../sass/components/wydarzenie.css";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
+import Image from 'react-bootstrap/Image'
 
 function Wydarzenie(props) {
   //cleaning up data formating
@@ -12,20 +13,21 @@ function Wydarzenie(props) {
 
   return (
     <div className="my-5">
-      <Row className="newsContainer">
-        <Col>
-          <img
+      <Row className="newsContainer d-flex justify-content-center">
+        <Col lg='3' className='d-flex flex-column align-items-center'>
+          <Image
+            rounded
             className="newsPhoto"
             src={props.title_image}
             alt={props.title}
           />
         </Col>
-        <Col>
-          <Card style={{ width: "50rem", height: "400px" }} border="dark">
+        <Col lg='6'>
+          <Card border="dark">
             <Card.Body className="d-flex flex-column">
               <Card.Title><h1>{props.title}</h1></Card.Title>
               <Card.Subtitle className="mb-2 text-muted fs-6">
-                Dodane: {formatDate} przez: {props.username} 
+                Dodane: {formatDate} 
               </Card.Subtitle>
               <Card.Text>
                 {props.contentPreview}

@@ -1,17 +1,17 @@
 import Jumbotron from "../Jumbotron";
 import ListaAktualnosci from "./ListaAktualnosci";
-import DodajWydarzenie from "./DodajWydarzenie";
+import news from '../../images/news.jpg'
+
 
 const Aktualnosci = () => {
   const opis = {
     title: "Aktualności",
-    photo: "src",
+    photo: news,
   };
 
   return (
     <div>
       <Jumbotron title={opis.title} photo={opis.photo} />
-      <DodajWydarzenie />
       <ListaAktualnosci />
     </div>
   );

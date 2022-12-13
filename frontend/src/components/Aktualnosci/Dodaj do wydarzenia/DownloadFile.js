@@ -26,7 +26,6 @@ const DownloadFile = (props) => {
         }).then((response) => {
             const data = response.data;
             setFile(data);
-            console.log(file.length)
 
         })
             .catch((error) => {
@@ -34,24 +33,22 @@ const DownloadFile = (props) => {
             })
     }
 
-    //rerender after deleting
-    const refreshedFiles = () => {
-
-    }
-
 
 
     return (
         <>
-            {file && file.map((download) => {
-                return (
-                    <>
-                        <a href={download.file}>{download.file_name}</a>
-                        <DeleteFile  file={download.id} getFiles={getFiles}/>
+        <p>Do pobrania:</p>
+            <ul>
+                {file && file.map((download) => {
+                    return (
+                        <li className='mb-2'>
+                            <a href={download.file} className='me-3'>{download.file_name}</a>
+                            <DeleteFile file={download.id} getFiles={getFiles} />
 
-                    </>
-                )
-            })}
+                        </li>
+                    )
+                })}
+            </ul>
         </>
     )
 }

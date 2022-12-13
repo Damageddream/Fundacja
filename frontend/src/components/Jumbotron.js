@@ -2,15 +2,13 @@ import React from "react";
 
 
 const Jumbotron = (props) => {
-
-  const image = props.photo
-
+  
   return (
     <div
       className="p-5 text-center bg-image"
       style={{
         backgroundImage:
-          {image},
+        `url(${props.photo})`,
         height: 300,
       }}
     >

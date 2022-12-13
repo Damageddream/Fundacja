@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import axios from "axios";
 import Wydarzenie from "./Wydarzenie";
 import Paginat from "./Pagination";
+import DodajWydarzenie from "./DodajWydarzenie";
 
 
 function ListaAktualnosci() {
@@ -47,7 +48,7 @@ function ListaAktualnosci() {
       });
     setIsLoading(false);
   }
-     
+
 
 
   // pagination variables
@@ -62,7 +63,7 @@ function ListaAktualnosci() {
   };
 
   return (
-    <div className="d-flex justify-content-center">
+    <div>
       <Row>
         <Col>
           {isLoading && <p>Trwa pobieranie aktualności</p>}
@@ -75,7 +76,7 @@ function ListaAktualnosci() {
 
           {!error &&
             currentPosts &&
-            currentPosts.map((wydarzenie) => (
+            currentPosts.reverse().map((wydarzenie) => (
               <Wydarzenie
                 key={wydarzenie.id}
                 id={wydarzenie.id}
@@ -96,6 +97,9 @@ function ListaAktualnosci() {
                 active={active}
               />
             </Col>
+          </Row>
+          <Row className='d-flex justify-content-center'>
+            <DodajWydarzenie />
           </Row>
         </Col>
       </Row>

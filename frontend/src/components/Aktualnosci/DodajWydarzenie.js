@@ -89,7 +89,7 @@ const DodajWydarzenie = () => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button className='mt-5' style={{ width: "20rem" }} variant="success" onClick={handleShow}>
         Dodaj Wydarzenie
       </Button>
 

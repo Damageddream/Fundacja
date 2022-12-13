@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import Jumbotron from "../Jumbotron";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
+import fundacja from '../../images/fresk-logo.png'
+import "../../sass/components/logo.css";
+
 
 const Ofundacji = () => {
   const opis = {
     title: "Fundacja Rozwoju Edukacji i Społecznej Kreatywności",
-    photo: "src",
+    photo: fundacja,
   };
 
   //variables with content of page
@@ -60,7 +62,21 @@ const Ofundacji = () => {
   };
   return (
     <div>
-      <Jumbotron title={opis.title} photo={opis.photo} />
+      <div
+        style={{
+          height: 300,
+        }}>
+        <div
+          id='freskPhoto'
+          className="center bg-image"
+          style={{
+            backgroundImage:
+              `url(${opis.photo})`,
+            height: 200,
+          }}
+        >
+        </div>
+      </div>
       <Row>
         <Col></Col>
         <Col className="mt-5">
