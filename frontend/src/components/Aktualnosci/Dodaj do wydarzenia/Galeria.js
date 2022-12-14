@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import DeleteImage from "./UsunObraz";
 import ImageGallery from 'react-image-gallery';
-import "react-image-gallery/styles/css/image-gallery.css"
+import "react-image-gallery/styles/css/image-gallery.css";
+import "../../../sass/components/gallery.css"
 
 const Galeria = (props) => {
   // states for storing images for gallery and loading state and errors
@@ -33,6 +33,7 @@ const Galeria = (props) => {
             thumbnail: download.image,
           })
         setGellery(Photos)
+        console.log(Photos)
         });
 
       })
@@ -43,7 +44,7 @@ const Galeria = (props) => {
 
   return (
     <>
-      <ImageGallery items={gallery} />
+      <ImageGallery items={gallery}/>
     </>
   );
 };
