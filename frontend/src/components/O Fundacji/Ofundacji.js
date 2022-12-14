@@ -3,50 +3,63 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 import fundacja from '../../images/fresk-logo.png'
+import Pracownik from "./KartaPracownik";
 import "../../sass/components/logo.css";
+import Hania from '../../images/Hania.png';
+import Magda from '../../images/Magda.png';
+import Marcin from '../../images/Marcin.png';
 
 
 const Ofundacji = () => {
+
+
+  // data for jumbotron on top
   const opis = {
     title: "Fundacja Rozwoju Edukacji i Społecznej Kreatywności",
     photo: fundacja,
+
   };
 
-  //variables with content of page
-  const oNas = <p>o fundacji</p>;
+  // workers data for cards
+  const Hanna = {
+    name: 'Hanna Maria Pawluczyk',
+    photo: Hania,
+    function: 'Prezes Zarządu'
+  }
 
-  const historia = <p>historia</p>;
+  const Magdalena = {
+    name: 'Magdalena Ewelina Anuszkiewicz',
+    photo: Magda,
+    function: 'Specjalista do spraw szkoleń'
+  }
 
-  const rada = <p>rada i zarząd</p>;
+  const Marcan = {
+    name: 'Marcin Grabowski',
+    photo: Marcin,
+    function: 'Specjalista do spraw szkoleń'
+  }
 
-  const zespol = <p>zespol</p>;
-
-  //Changes between contents
-  const [content, setOpis] = useState(oNas);
 
   //Setting className to active or ''
   const [isActiveh, setIsActiveh] = useState(false);
-  const [isActiveo, setIsActiveo] = useState(false);
+  const [isActiveo, setIsActiveo] = useState(true);
   const [isActiver, setIsActiver] = useState(false);
   const [isActivez, setIsActivez] = useState(false);
 
   //seeting one of list items as active and rest as inactive
   const historiaHandler = () => {
-    setOpis(historia);
     setIsActiveh(true);
     setIsActiver(false);
     setIsActivez(false);
     setIsActiveo(false);
   };
   const radaHandler = () => {
-    setOpis(rada);
     setIsActiver(true);
     setIsActiveh(false);
     setIsActivez(false);
     setIsActiveo(false);
   };
   const zespolHandler = () => {
-    setOpis(zespol);
     setIsActivez(true);
     setIsActiver(false);
     setIsActiveh(false);
@@ -54,7 +67,6 @@ const Ofundacji = () => {
   };
 
   const oNasHandler = () => {
-    setOpis(oNas);
     setIsActiveo(true);
     setIsActiver(false);
     setIsActivez(false);
@@ -73,11 +85,11 @@ const Ofundacji = () => {
         >
         </div>
       </div>
-      <Row>
-        <Col></Col>
-        <Col className="mt-5">
+      <Row className='justify-content-center'>
+        <Col className="mt-5 ms-5">
           <ListGroup as="ul">
             <ListGroup.Item
+              style={{ cursor: 'pointer' }}
               as="li"
               onClick={oNasHandler}
               className={
@@ -87,6 +99,7 @@ const Ofundacji = () => {
               O nas
             </ListGroup.Item>
             <ListGroup.Item
+              style={{ cursor: 'pointer' }}
               as="li"
               onClick={historiaHandler}
               className={
@@ -96,6 +109,7 @@ const Ofundacji = () => {
               Historia Fundacji
             </ListGroup.Item>
             <ListGroup.Item
+              style={{ cursor: 'pointer' }}
               as="li"
               onClick={radaHandler}
               className={
@@ -105,6 +119,7 @@ const Ofundacji = () => {
               Rada i Zarząd
             </ListGroup.Item>
             <ListGroup.Item
+              style={{ cursor: 'pointer' }}
               as="li"
               onClick={zespolHandler}
               className={
@@ -116,7 +131,53 @@ const Ofundacji = () => {
           </ListGroup>
         </Col>
         <Col xs={8} className="mt-5">
-          {content}
+          <div className='text-center'>
+            {isActiveo && <h4>FUNDACJA ROZWOJU EDUKACJI I SPOŁECZNEJ KREATYWNOŚCI</h4>}
+          </div>
+          <div>
+            {isActiveo && <p className='text-center'>Nullam at arcu viverra, gravida urna vitae, posuere urna.
+              In hac habitasse platea dictumst. Maecenas sit amet nisi et libero consequat finibus.
+              Maecenas quam erat, efficitur vel aliquam at, finibus ut neque.
+              Vivamus in urna accumsan, semper metus ac, sollicitudin ligula.
+              Phasellus sodales eget urna quis gravida. Praesent id ligula quam. Aenean commodo eu orci sit amet sollicitudin.
+              Suspendisse potenti. Integer eu lectus bibendum, consequat nisl ut, rhoncus purus.
+              Vivamus erat magna, pellentesque eget augue a, pharetra laoreet leo.
+              Maecenas eu tellus magna. Vestibulum ut eros vel est accumsan finibus.
+              Aliquam tincidunt dignissim leo, laoreet blandit orci pulvinar a.
+              Vivamus dapibus gravida lectus, pulvinar egestas turpis mollis at.
+              Fusce iaculis a sem non bibendum.</p>}
+          </div>
+          <div className='text-center'>
+            {isActiveh && <h4>HISTORIA</h4>}
+          </div>
+          <div>
+            {isActiveh && <p className='text-center'>Nullam at arcu viverra, gravida urna vitae, posuere urna.
+              In hac habitasse platea dictumst. Maecenas sit amet nisi et libero consequat finibus.
+              Maecenas quam erat, efficitur vel aliquam at, finibus ut neque.
+              Vivamus in urna accumsan, semper metus ac, sollicitudin ligula.
+              Phasellus sodales eget urna quis gravida. Praesent id ligula quam. Aenean commodo eu orci sit amet sollicitudin.
+              Suspendisse potenti. Integer eu lectus bibendum, consequat nisl ut, rhoncus purus.
+              Vivamus erat magna, pellentesque eget augue a, pharetra laoreet leo.
+              Maecenas eu tellus magna. Vestibulum ut eros vel est accumsan finibus.
+              Aliquam tincidunt dignissim leo, laoreet blandit orci pulvinar a.
+              Vivamus dapibus gravida lectus, pulvinar egestas turpis mollis at.
+              Fusce iaculis a sem non bibendum.</p>}
+          </div>
+          {isActiver &&
+            <Col className='d-flex justify-content-center'>
+              <Pracownik name={Hanna.name} image={Hanna.photo} function={Hanna.function} />
+            </ Col>
+          }
+          {isActivez &&
+            <Row className='d-flex justify-content-center'>
+              <Col className='d-flex justify-content-center'>
+                <Pracownik className='my-3' name={Magdalena.name} image={Magdalena.photo} function={Magdalena.function} />
+              </ Col>
+              <Col className='d-flex justify-content-center'>
+                <Pracownik name={Marcan.name} image={Marcan.photo} function={Marcan.function} />
+              </Col>
+            </ Row>
+          }
         </Col>
       </Row>
     </div>

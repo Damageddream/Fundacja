@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import DeleteImage from "./UsunObraz";
+import ImageGallery from 'react-image-gallery';
+import "react-image-gallery/styles/css/image-gallery.css"
 
 const Galeria = (props) => {
   // states for storing images for gallery and loading state and errors
   const [file, setFile] = useState(null);
   const [isLoading, setIsLoading] = useState();
   const [errors, setErrors] = useState();
+  const [gallery, setGellery] = useState([]);
 
   // when render use function to get images
   useEffect(() => {
@@ -23,8 +26,15 @@ const Galeria = (props) => {
       .then((response) => {
         const data = response.data;
         setFile(data);
-        file.map((download) => {});
-        console.log(data);
+        const Photos = []
+        file.map((download) => {
+          Photos.push({
+            original: download.image,
+            thumbnail: download.image,
+          })
+        setGellery(Photos)
+        });
+
       })
       .catch((error) => {
         setErrors(error);
@@ -33,17 +43,7 @@ const Galeria = (props) => {
 
   return (
     <>
-      {file &&
-        file.map((download) => {
-          return (
-            <>
-              <img
-                src={download.image}
-              />
-              <DeleteImage image={download.id} />
-            </>
-          );
-        })}
+      <ImageGallery items={gallery} />
     </>
   );
 };
