@@ -5,27 +5,33 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import "../../../sass/components/gallery.css"
 
 const Galeria = (props) => {
-  // states for storing images for gallery and loading state and errors
-  const [file, setFile] = useState(null);
-  const [isLoading, setIsLoading] = useState();
-  const [errors, setErrors] = useState();
-  const [gallery, setGellery] = useState([]);
+
 
   // when render use function to get images
   useEffect(() => {
     getFiles();
   }, []);
+  
+
+    // states for storing images for gallery and loading state and errors
+    const [file, setFile] = useState([]);
+    const [isLoading, setIsLoading] = useState();
+    const [errors, setErrors] = useState();
+    const [gallery, setGellery] = useState([]);
 
   // function fetching photos to gallery from backend
-  const getFiles = () => {
+  function getFiles() {
     setIsLoading(true);
     axios({
       method: "GET",
       url: "/api/photos/",
     })
       .then((response) => {
-        const data = response.data;
-        setFile(data);
+        return response.data})
+      .then((data) =>{
+        setFile(data)})
+      .then(()=> {
+        console.log(file)
         const Photos = []
         file.map((download) => {
           Photos.push({
@@ -33,7 +39,6 @@ const Galeria = (props) => {
             thumbnail: download.image,
           })
         setGellery(Photos)
-        console.log(Photos)
         });
 
       })
