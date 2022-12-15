@@ -58,7 +58,7 @@ const WydarzenieOsobno = () => {
   }
   return (
     <Row>
-      <Col md='4' sm='4' lg='2' className=" ms-3 d-flex flex-column align-items-left justify-content-around">
+      <Col md='4' sm='4' lg='2' className=" ms-3 mt-5 d-flex flex-column align-items-left">
         <Plik wydarzenie={locationId} />
         <Obraz wydarzenie={locationId} />
         <EdytujWydarzenie
