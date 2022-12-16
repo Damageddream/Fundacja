@@ -11,6 +11,8 @@ const Galeria = (props) => {
   useEffect(() => {
     getFiles();
   }, []);
+
+
   
 
     // states for storing images for gallery and loading state and errors
@@ -18,6 +20,18 @@ const Galeria = (props) => {
     const [isLoading, setIsLoading] = useState();
     const [errors, setErrors] = useState();
     const [gallery, setGellery] = useState([]);
+
+    useEffect(() => {
+      const Photos = []
+      file.map((download) => {
+        Photos.push({
+          original: download.image,
+          thumbnail: download.image,
+        })
+      setGellery(Photos)
+      });
+  
+    },[file])
 
   // function fetching photos to gallery from backend
   function getFiles() {
@@ -29,23 +43,14 @@ const Galeria = (props) => {
       .then((response) => {
         return response.data})
       .then((data) =>{
-        setFile(data)})
-      .then(()=> {
-        console.log(file)
-        const Photos = []
-        file.map((download) => {
-          Photos.push({
-            original: download.image,
-            thumbnail: download.image,
-          })
-        setGellery(Photos)
-        });
-
+        setFile(data)
       })
       .catch((error) => {
         setErrors(error);
       });
   };
+  
+  
 
   return (
     <>

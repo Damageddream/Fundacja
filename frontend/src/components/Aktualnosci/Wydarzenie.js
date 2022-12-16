@@ -32,7 +32,7 @@ function Wydarzenie(props) {
               <Card.Text>
                 {props.contentPreview}
               </Card.Text>
-              <Link to={`/aktualnosci/${props.id}`} state={props.id} className="btn btn-primary mt-auto">
+              <Link to={`/aktualnosci/${props.id}`} state={props.id} className="mt-auto">
                 Zobacz więcej
               </Link>
             </Card.Body>

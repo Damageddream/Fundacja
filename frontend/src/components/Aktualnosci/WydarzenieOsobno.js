@@ -11,6 +11,8 @@ import EdytujWydarzenie from "./Dodaj do wydarzenia/EdytujWydarzenie";
 import DownloadFile from "./Dodaj do wydarzenia/DownloadFile";
 import draftToHtml from "draftjs-to-html";
 import Galeria from "./Dodaj do wydarzenia/Galeria";
+import '../../sass/components/wydarzenieOsobno.css'
+import Image from 'react-bootstrap/Image'
 
 const WydarzenieOsobno = () => {
   let navigate = useNavigate();
@@ -46,6 +48,7 @@ const WydarzenieOsobno = () => {
       .then((response) => {
         const data = response.data;
         setNewAktualnosci(data);
+        console.log()
       })
       .catch((error) => {
         if (error.response) {
@@ -58,42 +61,54 @@ const WydarzenieOsobno = () => {
   }
   return (
     <Row>
-      <Col md='4' sm='4' lg='2' className=" ms-3 mt-5 d-flex flex-column align-items-left">
-        <Plik wydarzenie={locationId} />
-        <Obraz wydarzenie={locationId} />
-        <EdytujWydarzenie
-          className="mb-2"
-          wydarzenie={locationId}
-          title={aktualnosci.title}
-          title_image={aktualnosci.title_image}
-          content_preview={aktualnosci.content_preview}
-          content={aktualnosci.content}
-        />
-        <UsunWydarzenie wydarzenie={locationId} />
-      </Col>
+
       <Col className="d-flex flex-column align-items-center">
-        <Row>
+
+        <Row className='imgnews my-5'>
+          <Col className='imgnews'>
+            <Image
+              className='NewsPicture'
+              src={aktualnosci.title_image}
+              alt={aktualnosci.title}
+            />
+             Dodane:{Moment(aktualnosci.date).format("DD.MM.YYYY")}
+          </Col>
+        </Row>
+        <Row className='mb-5'>
           <h1>{aktualnosci.title}</h1>
         </Row>
         <Row>
-          <img
-            className="newsPhoto"
-            src={aktualnosci.title_image}
-            alt={aktualnosci.title}
-          />
-        </Row>
-        <Row>Dodane:{Moment(aktualnosci.date).format("DD.MM.YYYY")}</Row>
+         
+          </Row>
         <Row>
-          <div dangerouslySetInnerHTML={content}></div>
+          <Col md='4' sm='4' lg='2' className=" ms-3 d-flex flex-column align-items-left">
+            <Plik wydarzenie={locationId} />
+            <Obraz wydarzenie={locationId} />
+            <EdytujWydarzenie
+              className="mb-2"
+              wydarzenie={locationId}
+              title={aktualnosci.title}
+              title_image={aktualnosci.title_image}
+              content_preview={aktualnosci.content_preview}
+              content={aktualnosci.content}
+            />
+          
+          <UsunWydarzenie wydarzenie={locationId} />
+          </ Col>
+          <Col>
+            <div dangerouslySetInnerHTML={content}></div>
+          </Col>
+          <Col md='4' sm='4' lg='2' className=" ms-3 d-flex flex-column align-items-left">
+            <DownloadFile wydarzenie={locationId} />
+          </Col>
+
         </Row>
         <Row>
           <Galeria wydarzenie={locationId} />
         </Row>
-      </Col>
-      <Col md='4' sm='4' lg='2' className=" ms-3 d-flex flex-column align-items-left justify-content-center">
-        <DownloadFile wydarzenie={locationId} />
-      </Col>
-    </Row>
+      </Col >
+
+    </Row >
   );
 };
 
