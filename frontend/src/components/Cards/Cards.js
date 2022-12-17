@@ -10,20 +10,20 @@ const Cards = () => {
   const Karty = [
     {
       id: "k1",
-      title: "Dotacje",
-      opis: "lore ipsum",
+      title: "Usługi",
+      opis: "",
       foto: dotacje,
     },
     {
       id: "k2",
-      title: "Kursy i Szkolenia",
-      opis: "lore ipsum",
+      title: "Kursy i Projekty",
+      opis: "",
       foto: ksiazka,
     },
     {
       id: "k3",
       title: "Współpraca",
-      opis: "lore ipsum",
+      opis: "",
       foto: rece,
     },
   ];

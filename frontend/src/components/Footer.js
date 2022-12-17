@@ -29,7 +29,7 @@ const Footer = () => {
               <p>
               <MDBIcon fas icon="hand-holding-usd" className="me-2" />
                 <a href="#!" className="text-reset">
-                  Dotacje
+                  Wynajem sali
                 </a>
               </p>
               <p>

@@ -34,6 +34,7 @@ class ContactForm(models.Model):
     conForm = models.TextField(max_length=300)
     email = models.EmailField(max_length=64, )
     name = models.CharField(max_length=64, )
+    read = models.BooleanField(default=True)
 
 
 

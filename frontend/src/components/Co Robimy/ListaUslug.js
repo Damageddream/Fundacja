@@ -9,14 +9,14 @@ const ListaUslug = () => {
         <div className="containeru">
             <div  className="sectionu" style={{ backgroundImage: `url(${eu})` }}>
                 <div className="contentu">
-                <Link className='text-white' to={'/corobimy/dotacje'}><h1>Dotacje</h1></Link>
+                <Link className='text-white' to={'/corobimy/dotacje'}><h1>Projekty</h1></Link>
                 </div>
                 <div className="overlayu"></div>
             </div>
             
                 <div  className="sectionu" style={{ backgroundImage: `url(${kurs})` }}>
                     <div className="contentu">
-                        <Link className='text-white' to={'/corobimy/projekty'}><h1>Projekty</h1></Link>
+                        <Link className='text-white' to={'/corobimy/projekty'}><h1>Kursy</h1></Link>
                     </div>
                     <div className="overlayu"></div>
 

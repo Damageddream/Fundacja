@@ -96,9 +96,6 @@ const Register = () => {
                         <Button className="me-3" variant="primary" type="submit" onClick={handleSubmit}>
                     Zarejestruj się
                 </Button>
-                <Button variant="secondary">
-                    Wróć
-                </Button>
             </Form>
                 </Col>
             </Row>
