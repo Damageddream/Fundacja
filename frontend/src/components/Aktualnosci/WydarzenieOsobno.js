@@ -29,7 +29,7 @@ const WydarzenieOsobno = () => {
     getAktulanosci();
   }, []);
 
-  let locationId = location.pathname.slice(-1);
+  let locationId = location.pathname.slice(13);
   function deleteAktualnosci() {
     axios({
       method: "DELETE",
