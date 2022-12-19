@@ -41,6 +41,7 @@ function Plik(props) {
 
   //Submit and add file to download
   const handleSubmit = (event) => {
+    props.setAddedFile(false)
     setIsLoading(true);
     event.preventDefault()
     axios({
@@ -50,11 +51,14 @@ function Plik(props) {
       headers: {
         "Content-Type": "multipart/form-data",
       },
-    }).catch((error) => {
+    }).then(()=>{
+      setIsLoading(true)
+      props.setAddedFile(true)
+      handleClose()
+    })
+    .catch((error) => {
       setErrors(error);
     })
-
-    setIsLoading(false);
   };
 
   //Handle change in file name in form

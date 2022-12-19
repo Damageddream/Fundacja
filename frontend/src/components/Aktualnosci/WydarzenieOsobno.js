@@ -25,9 +25,20 @@ const WydarzenieOsobno = () => {
   //setting text editor into html
   const content = { __html: draftToHtml(aktualnosci.content) };
 
+  //state for render when succesfully added file
+  const [addedFile, setAddedFile] = useState(false)
+
+  //state for render when succesfully added image
+  const [addedImage, setAddedImage] = useState(false)
+
+
+  // fetch data after render
   useEffect(() => {
     getAktulanosci();
   }, []);
+
+
+
 
   let locationId = location.pathname.slice(13);
   function deleteAktualnosci() {
@@ -48,7 +59,7 @@ const WydarzenieOsobno = () => {
       .then((response) => {
         const data = response.data;
         setNewAktualnosci(data);
-        console.log()
+        console.log('hi')
       })
       .catch((error) => {
         if (error.response) {
@@ -82,8 +93,8 @@ const WydarzenieOsobno = () => {
           </Row>
         <Row>
           <Col md='4' sm='4' lg='2' className=" ms-3 d-flex flex-column align-items-left">
-            <Plik wydarzenie={locationId} />
-            <Obraz wydarzenie={locationId} />
+            <Plik wydarzenie={locationId} setAddedFile={setAddedFile} />
+            <Obraz wydarzenie={locationId} setAddedImage={setAddedImage} />
             <EdytujWydarzenie
               className="mb-2"
               wydarzenie={locationId}
@@ -99,12 +110,12 @@ const WydarzenieOsobno = () => {
             <div dangerouslySetInnerHTML={content}></div>
           </Col>
           <Col md='4' sm='4' lg='2' className=" ms-3 d-flex flex-column align-items-left">
-            <DownloadFile wydarzenie={locationId} />
+            <DownloadFile wydarzenie={locationId} addedFile={addedFile} />
           </Col>
 
         </Row>
         <Row>
-          <Galeria wydarzenie={locationId} />
+          <Galeria wydarzenie={locationId} addedImage={addedImage} />
         </Row>
       </Col >
 

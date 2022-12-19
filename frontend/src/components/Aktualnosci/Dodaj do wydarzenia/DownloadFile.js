@@ -26,6 +26,11 @@ const DownloadFile = (props) => {
     getFiles();
   }, []);
 
+  //rerender after new file is added
+  useEffect(()=>{
+    getFiles();
+  }, [props.addedFile])
+
   // function fetching files to donwload from backend
   const getFiles = () => {
     setIsLoading(true);

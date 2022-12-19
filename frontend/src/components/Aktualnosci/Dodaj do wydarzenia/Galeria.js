@@ -29,6 +29,10 @@ const Galeria = (props) => {
     });
   }, [file]);
 
+  useEffect(()=>{
+    getFiles()
+  }, [props.addedImage])
+
   // function fetching photos to gallery from backend
   function getFiles() {
     setIsLoading(true);

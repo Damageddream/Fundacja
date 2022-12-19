@@ -37,6 +37,7 @@ function Obraz(props) {
   
   const handleSubmit = (event) => {
     setIsLoading(true);
+    props.setAddedImage(false)
     event.preventDefault()
     
       axios({
@@ -46,7 +47,13 @@ function Obraz(props) {
         headers: {
             "Content-Type": "multipart/form-data",
         },
-      }).catch((error) => {
+      })
+      .then(()=>{
+        setIsLoading(false)
+        props.setAddedImage(true)
+        handleClose()
+      })
+      .catch((error) => {
         setErrors(error);
       })
     
