@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
@@ -6,12 +6,21 @@ import RichText from '../Utilities/RichText'
 import "../Utilities/RichText.css";
 import axios from "axios";
 
+
 const DodajWydarzenie = () => {
+
   //state for showing - hidding modal
   const [show, setShow] = useState(false);
+
+  //state for rerendering after success
+  const [success, setSuccess] = useState(false);
+  
   //functions for showing - hidding modal
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+
+  
 
   //states for loading when fetching data and catching errors from fetching
   const [errors, setErrors] = useState();
@@ -79,13 +88,18 @@ const DodajWydarzenie = () => {
       data: formForm,
       headers: {
         "Content-Type": "multipart/form-data"
-      }
-    }).catch((error) => {
+      }})
+      .then(()=>{
+        setSuccess(true)
+        setIsLoading(false);
+
+      })
+    .catch((error) => {
       setErrors(error)
     })
-
-    setIsLoading(false);
+    handleClose()
   }
+
 
   return (
     <>

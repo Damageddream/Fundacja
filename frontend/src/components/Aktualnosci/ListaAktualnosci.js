@@ -37,7 +37,8 @@ function ListaAktualnosci() {
     })
       .then((response) => {
         const data = response.data;
-        setNewAktualnosci(data);
+        const revesedData = data.reverse()
+        setNewAktualnosci(revesedData);
       })
       .catch((error) => {
         if (error.response) {
@@ -54,7 +55,8 @@ function ListaAktualnosci() {
   // pagination variables
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = aktualnosci.slice(indexOfFirstPost, indexOfLastPost);
+  const reversedAktualnosci = aktualnosci.reverse()
+  const currentPosts = reversedAktualnosci.slice(indexOfFirstPost, indexOfLastPost);
 
   //change page in pagination
   const paginate = (pageNumber) => {
@@ -76,7 +78,7 @@ function ListaAktualnosci() {
 
           {!error &&
             currentPosts &&
-            currentPosts.reverse().map((wydarzenie) => (
+            currentPosts.map((wydarzenie) => (
               <Wydarzenie
                 key={wydarzenie.id}
                 id={wydarzenie.id}

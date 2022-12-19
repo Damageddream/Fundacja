@@ -3,6 +3,7 @@ import ListaAktualnosci from "./ListaAktualnosci";
 import news from '../../images/news.jpg'
 
 
+
 const Aktualnosci = () => {
   const opis = {
     title: "Aktualności",
