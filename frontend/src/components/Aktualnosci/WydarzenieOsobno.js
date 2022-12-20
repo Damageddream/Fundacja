@@ -31,13 +31,21 @@ const WydarzenieOsobno = () => {
   //state for render when succesfully added image
   const [addedImage, setAddedImage] = useState(false)
 
+  //state for render when succesfully edited wydarzenie
+  const [editedWydarzenie, setEditedWydarzenie] = useState(false)
+
+
+
 
   // fetch data after render
   useEffect(() => {
     getAktulanosci();
   }, []);
 
-
+  // fetch data after render
+  useEffect(() => {
+    getAktulanosci();
+  }, [editedWydarzenie]);
 
 
   let locationId = location.pathname.slice(13);
@@ -82,20 +90,21 @@ const WydarzenieOsobno = () => {
               src={aktualnosci.title_image}
               alt={aktualnosci.title}
             />
-             Dodane:{Moment(aktualnosci.date).format("DD.MM.YYYY")}
+            Dodane:{Moment(aktualnosci.date).format("DD.MM.YYYY")}
           </Col>
         </Row>
         <Row className='mb-5'>
           <h1>{aktualnosci.title}</h1>
         </Row>
         <Row>
-         
-          </Row>
+
+        </Row>
         <Row>
           <Col md='4' sm='4' lg='2' className=" ms-3 d-flex flex-column align-items-left">
             <Plik wydarzenie={locationId} setAddedFile={setAddedFile} />
             <Obraz wydarzenie={locationId} setAddedImage={setAddedImage} />
             <EdytujWydarzenie
+              setEditedWydarzenie={setEditedWydarzenie}
               className="mb-2"
               wydarzenie={locationId}
               title={aktualnosci.title}
@@ -103,8 +112,8 @@ const WydarzenieOsobno = () => {
               content_preview={aktualnosci.content_preview}
               content={aktualnosci.content}
             />
-          
-          <UsunWydarzenie wydarzenie={locationId} />
+
+            <UsunWydarzenie wydarzenie={locationId} />
           </ Col>
           <Col>
             <div dangerouslySetInnerHTML={content}></div>

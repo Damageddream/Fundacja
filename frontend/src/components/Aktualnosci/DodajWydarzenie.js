@@ -7,14 +7,11 @@ import "../Utilities/RichText.css";
 import axios from "axios";
 
 
-const DodajWydarzenie = () => {
+const DodajWydarzenie = (props) => {
 
   //state for showing - hidding modal
   const [show, setShow] = useState(false);
 
-  //state for rerendering after success
-  const [success, setSuccess] = useState(false);
-  
   //functions for showing - hidding modal
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -45,7 +42,6 @@ const DodajWydarzenie = () => {
       ...form,
       title: e.target.value,
     });
-    console.log(form)
   };
   //catching data from onchange - title_image and updating form
   const handleTitle_imageChange = (e) => {
@@ -81,6 +77,7 @@ const DodajWydarzenie = () => {
   const handleSubmit = (e) => {
     setIsLoading(true);
     e.preventDefault()
+    props.setAddeddWydarzenie(false)
 
     axios({
       method: 'POST',
@@ -90,14 +87,14 @@ const DodajWydarzenie = () => {
         "Content-Type": "multipart/form-data"
       }})
       .then(()=>{
-        setSuccess(true)
         setIsLoading(false);
+        props.setAddeddWydarzenie(true)
+        handleClose()
 
       })
     .catch((error) => {
       setErrors(error)
     })
-    handleClose()
   }
 
 

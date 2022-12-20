@@ -15,8 +15,8 @@ function ListaAktualnosci() {
   // setting for instance of error
   const [error, setError] = useState();
 
-  //setting state for rich text data
-  const [richText, setRichText] = useState();
+  //state for render when succesfully edited wydarzenie
+  const [addeddWydarzenie, setAddeddWydarzenie] = useState(false)
 
   //pagination states
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,6 +27,11 @@ function ListaAktualnosci() {
   useEffect(() => {
     getAktulanosci();
   }, []);
+
+  //fires function for getting data from backend when new wydarzenie is added
+  useEffect(() => {
+    getAktulanosci();
+  }, [addeddWydarzenie]);
 
   // fetching aktualnosci from backend
   function getAktulanosci() {
@@ -101,7 +106,7 @@ function ListaAktualnosci() {
             </Col>
           </Row>
           <Row className='d-flex justify-content-center'>
-            <DodajWydarzenie />
+            <DodajWydarzenie setAddeddWydarzenie={setAddeddWydarzenie}/>
           </Row>
         </Col>
       </Row>

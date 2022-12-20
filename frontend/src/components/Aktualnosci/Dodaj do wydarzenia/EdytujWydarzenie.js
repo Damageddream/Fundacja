@@ -82,6 +82,7 @@ const EdytujWydarzenie = (props) => {
   const handleSubmit = (e) => {
     setIsLoading(true);
     e.preventDefault()
+    props.setEditedWydarzenie(false)
 
     axios({
       method: 'PATCH',
@@ -91,13 +92,14 @@ const EdytujWydarzenie = (props) => {
         "Content-Type": "multipart/form-data"
       }
     
+    }).then(()=>{
+      handleClose()
+      props.setEditedWydarzenie(true)
+      setIsLoading(false);
     })
     .catch((error) => {
       setErrors(error)
     })
-    .then(navigate('/aktualnosci'))
-
-    setIsLoading(false);
   }
 
   return (

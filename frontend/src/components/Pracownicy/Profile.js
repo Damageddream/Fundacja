@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 import Jumbotron from "../Jumbotron";
 import Register from "./Register.js";
+import ProfilWiadomosci from "./ProfileWiadomosci";
 
 const Profil = () => {
   // data for jumbotron on top
@@ -56,30 +57,9 @@ const Profil = () => {
             </ListGroup.Item>
           </ListGroup>
         </Col>
-        <Col xs={8} className="mt-5">
-          <div className="text-center">
-            {isActiveo && (
-              <h4>FUNDACJA ROZWOJU EDUKACJI I SPOŁECZNEJ KREATYWNOŚCI</h4>
-            )}
-          </div>
+        <Col xs={8} className="m-5">
           <div>
-            {isActiveo && (
-              <p className="text-center">
-                Nullam at arcu viverra, gravida urna vitae, posuere urna. In hac
-                habitasse platea dictumst. Maecenas sit amet nisi et libero
-                consequat finibus. Maecenas quam erat, efficitur vel aliquam at,
-                finibus ut neque. Vivamus in urna accumsan, semper metus ac,
-                sollicitudin ligula. Phasellus sodales eget urna quis gravida.
-                Praesent id ligula quam. Aenean commodo eu orci sit amet
-                sollicitudin. Suspendisse potenti. Integer eu lectus bibendum,
-                consequat nisl ut, rhoncus purus. Vivamus erat magna,
-                pellentesque eget augue a, pharetra laoreet leo. Maecenas eu
-                tellus magna. Vestibulum ut eros vel est accumsan finibus.
-                Aliquam tincidunt dignissim leo, laoreet blandit orci pulvinar
-                a. Vivamus dapibus gravida lectus, pulvinar egestas turpis
-                mollis at. Fusce iaculis a sem non bibendum.
-              </p>
-            )}
+            {isActiveo && <ProfilWiadomosci  />}
           </div>
           <div className="text-center">{isActiveh && <h4>Zarejestruj</h4>}</div>
           <div>
