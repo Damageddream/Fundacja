@@ -1,13 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
 import Wydarzenie from "./Wydarzenie";
 import Paginat from "./Pagination";
 import DodajWydarzenie from "./DodajWydarzenie";
+import AuthContext from "../Utilities/Context";
 
 
 function ListaAktualnosci() {
+
+  //context for for checking if user is logged in
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
+
   // getting all of aktualnosci from backend
   const [aktualnosci, setNewAktualnosci] = useState([]);
   // setting loading state
@@ -105,9 +111,10 @@ function ListaAktualnosci() {
               />
             </Col>
           </Row>
-          <Row className='d-flex justify-content-center'>
-            <DodajWydarzenie setAddeddWydarzenie={setAddeddWydarzenie}/>
-          </Row>
+          {isLoggedIn && (
+            <Row className='d-flex justify-content-center'>
+              <DodajWydarzenie setAddeddWydarzenie={setAddeddWydarzenie} />
+            </Row>)}
         </Col>
       </Row>
     </div>

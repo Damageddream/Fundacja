@@ -35,9 +35,9 @@ const projekty = [{
 
 const ProjektyList = () => {
     return (
-        <Row>
+        <Row className='justify-content-md-center'>
             {projekty.map((projekt) => (
-                <Col sm='12' md='6'>
+                <Col sm='12' md='12' lg='6'>
                     <Projekt 
                     key={projekt.id}
                     title={projekt.title}

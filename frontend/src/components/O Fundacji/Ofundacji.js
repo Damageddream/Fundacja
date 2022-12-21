@@ -168,16 +168,17 @@ const Ofundacji = () => {
               <Pracownik name={Hanna.name} image={Hanna.photo} function={Hanna.function} />
             </ Col>
           }
-          {isActivez &&
-            <Row className='d-flex justify-content-center'>
-              <Col className='d-flex justify-content-center'>
-                <Pracownik className='my-3' name={Magdalena.name} image={Magdalena.photo} function={Magdalena.function} />
-              </ Col>
-              <Col className='d-flex justify-content-center'>
-                <Pracownik name={Marcan.name} image={Marcan.photo} function={Marcan.function} />
-              </Col>
-            </ Row>
-          }
+
+            {isActivez &&
+              <Row className='d-flex justify-content-center'>
+                <Col className='d-flex justify-content-center'>
+                  <Pracownik className='my-3' name={Magdalena.name} image={Magdalena.photo} function={Magdalena.function} />
+                </ Col>
+                <Col className='d-flex justify-content-center'>
+                  <Pracownik name={Marcan.name} image={Marcan.photo} function={Marcan.function} />
+                </Col>
+              </ Row>
+            }
         </Col>
       </Row>
     </div>

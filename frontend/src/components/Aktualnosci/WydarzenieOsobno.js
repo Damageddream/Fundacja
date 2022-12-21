@@ -1,5 +1,5 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useLocation, useNavigate, } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Moment from "moment";
 import Row from "react-bootstrap/Row";
@@ -13,9 +13,14 @@ import draftToHtml from "draftjs-to-html";
 import Galeria from "./Dodaj do wydarzenia/Galeria";
 import '../../sass/components/wydarzenieOsobno.css'
 import Image from 'react-bootstrap/Image'
+import AuthContext from "../Utilities/Context";
 
 const WydarzenieOsobno = () => {
-  let navigate = useNavigate();
+
+
+  //context for for checking if user is logged in
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
 
   const location = useLocation();
   const [aktualnosci, setNewAktualnosci] = useState([]);
@@ -49,14 +54,6 @@ const WydarzenieOsobno = () => {
 
 
   let locationId = location.pathname.slice(13);
-  function deleteAktualnosci() {
-    axios({
-      method: "DELETE",
-      url: `/api/aktualnoscis/${location.state}/`,
-    }).then(() => {
-      navigate("/aktualnosci");
-    });
-  }
 
   function getAktulanosci() {
     setIsLoading(true);
@@ -80,54 +77,50 @@ const WydarzenieOsobno = () => {
   }
   return (
     <Row>
-
-      <Col className="d-flex flex-column align-items-center">
-
-        <Row className='imgnews my-5'>
-          <Col className='imgnews'>
-            <Image
-              className='NewsPicture'
-              src={aktualnosci.title_image}
-              alt={aktualnosci.title}
-            />
-            Dodane:{Moment(aktualnosci.date).format("DD.MM.YYYY")}
-          </Col>
-        </Row>
-        <Row className='mb-5'>
-          <h1>{aktualnosci.title}</h1>
-        </Row>
-        <Row>
-
-        </Row>
-        <Row>
-          <Col md='4' sm='4' lg='2' className=" ms-3 d-flex flex-column align-items-left">
-            <Plik wydarzenie={locationId} setAddedFile={setAddedFile} />
-            <Obraz wydarzenie={locationId} setAddedImage={setAddedImage} />
-            <EdytujWydarzenie
-              setEditedWydarzenie={setEditedWydarzenie}
-              className="mb-2"
-              wydarzenie={locationId}
-              title={aktualnosci.title}
-              title_image={aktualnosci.title_image}
-              content_preview={aktualnosci.content_preview}
-              content={aktualnosci.content}
-            />
-
-            <UsunWydarzenie wydarzenie={locationId} />
-          </ Col>
-          <Col>
-            <div dangerouslySetInnerHTML={content}></div>
-          </Col>
-          <Col md='4' sm='4' lg='2' className=" ms-3 d-flex flex-column align-items-left">
-            <DownloadFile wydarzenie={locationId} addedFile={addedFile} />
-          </Col>
-
-        </Row>
-        <Row>
-          <Galeria wydarzenie={locationId} addedImage={addedImage} />
-        </Row>
-      </Col >
-
+      <Row className='imgnews my-5 justify-content-md-center'>
+        <Col md='8' className='imgnews'>
+          <Image
+            className='NewsPicture'
+            src={aktualnosci.title_image}
+            alt={aktualnosci.title}
+          />
+          Dodane:{Moment(aktualnosci.date).format("DD.MM.YYYY")}
+        </Col>
+      </Row>
+      <Row className='mb-5 justify-content-md-center'>
+        <Col sm='12'>
+          <h1 className="text-center">{aktualnosci.title}</h1>
+        </Col>
+      </Row>
+      <Row className='mb-5 justify-content-md-center'>
+        <Col md='2' className="m-3 d-flex flex-column align-items-left">
+          {isLoggedIn && (
+            <>
+              <Plik wydarzenie={locationId} setAddedFile={setAddedFile} />
+              <Obraz wydarzenie={locationId} setAddedImage={setAddedImage} />
+              <EdytujWydarzenie
+                setEditedWydarzenie={setEditedWydarzenie}
+                className="mb-2"
+                wydarzenie={locationId}
+                title={aktualnosci.title}
+                title_image={aktualnosci.title_image}
+                content_preview={aktualnosci.content_preview}
+                content={aktualnosci.content}
+              />
+              <UsunWydarzenie wydarzenie={locationId} />
+            </>
+          )}
+        </ Col>
+        <Col className="m-3 justify-content-md-center">
+          <div dangerouslySetInnerHTML={content}></div>
+        </Col>
+        <Col md='2' className=" ms-3 d-flex flex-column align-items-left">
+          <DownloadFile wydarzenie={locationId} addedFile={addedFile} />
+        </Col>
+      </Row>
+      <Row>
+        <Galeria wydarzenie={locationId} addedImage={addedImage} />
+      </Row>
     </Row >
   );
 };
